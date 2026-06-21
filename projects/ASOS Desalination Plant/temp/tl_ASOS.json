@@ -1,0 +1,132 @@
+{
+  "equipment_id": "ASOS",
+
+  "form": "TL",
+
+  "info": {
+
+    "developer_organization": "ASOS PROSES MAKINA SAN. Ve TIC. A.S.",
+
+    "department_name": "Технологический отдел",
+
+    "developer_full_name": "ASOS PROSES MAKINA SAN. Ve TIC. A.S.",
+
+    "equipment_name": "Опреснительная установка ASOS",
+
+    "documentation_name": "Комплект технологической документации",
+
+    "equipment_designation": "1.3.1.03.001.12039",
+
+    "technological_processes": "Технологические процессы ремонта",
+
+    "document_title": "Комплект технологической документации",
+
+    "document_designation": "КТД.1.3.1.03.001.12039-2025",
+
+    "document_set_designation": "КТД.1.3.1.03.001.12039-2025",
+
+    "revision": "РО",
+
+    "effective_date": "2026"
+  },
+
+  "approvals": [
+
+    {
+      "role":"УТВЕРЖДАЮ",
+
+      "organization":"АО «ВНИИАЭС»",
+
+      "position":"Генеральный директор",
+
+      "fio":"Иванов И.И.",
+
+      "date":"2026"
+    },
+
+    {
+      "role":"СОГЛАСОВАНО",
+
+      "organization":"АО «Концерн Росэнергоатом»",
+
+      "position":"Главный инженер",
+
+      "fio":"Петров П.П.",
+
+      "date":"2026"
+    },
+
+    {
+      "role":"СОГЛАСОВАНО",
+
+      "organization":"АО «Атомэнергопроект»",
+
+      "position":"Начальник отдела",
+
+      "fio":"Сидоров С.С.",
+
+      "date":"2026"
+    },
+
+    {
+      "role":"СОГЛАСОВАНО",
+
+      "organization":"АО «ВНИИАЭС»",
+
+      "position":"Начальник лаборатории",
+
+      "fio":"Кузнецов К.К.",
+
+      "date":"2026"
+    },
+
+    {
+      "role":"СОГЛАСОВАНО",
+
+      "organization":"АО «НИКИМТ-Атомстрой»",
+
+      "position":"Главный технолог",
+
+      "fio":"Орлов О.О.",
+
+      "date":"2026"
+    },
+
+    {
+      "role":"СОГЛАСОВАНО",
+
+      "organization":"АО «ОКБМ Африкантов»",
+
+      "position":"Главный конструктор",
+
+      "fio":"Морозов М.М.",
+
+      "date":"2026"
+    },
+
+    {
+      "role":"СОГЛАСОВАНО",
+
+      "organization":"АО «ОКБМ Африкантов»",
+
+      "position":"Главный конструктор",
+
+      "fio":"Корозов К.К.",
+
+      "date":"2026"
+    },
+
+    {
+      "role":"СОГЛАСОВАНО",
+
+      "organization":"АО «ОКБМ Африкантов»",
+
+      "position":"Главный конструктор",
+
+      "fio":"Лорозов Л.Л.",
+
+      "date":"2026"
+    }
+
+  ]
+}

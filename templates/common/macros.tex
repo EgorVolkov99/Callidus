@@ -1,0 +1,104 @@
+% ==========================================================
+% Общие макросы КТД
+% ==========================================================
+
+% Линия
+
+\newcommand{\KTDLine}[4]{
+    \draw[line width=0.4pt]
+    (#1,#2)--(#3,#4);
+}
+
+% Прямоугольник
+
+\newcommand{\KTDRect}[4]{
+    \draw[line width=0.4pt]
+    (#1,#2) rectangle (#3,#4);
+}
+
+% Текст
+
+\newcommand{\KTDText}[6]{
+
+\node[
+anchor=north west,
+text width=#3mm,
+align=#4,
+font=\fontsize{#5}{#5}\selectfont
+]
+at (#1,#2)
+{#6};
+
+}
+
+% Текст по центру
+
+\newcommand{\KTDCenter}[5]{
+
+\node[
+align=center,
+font=\fontsize{#4}{#4}\selectfont,
+text width=#3mm
+]
+at (#1,#2)
+{#5};
+
+}
+
+% Жирный центр
+
+\newcommand{\KTDBoldCenter}[5]{
+
+\node[
+align=center,
+font=\bfseries\fontsize{#4}{#4}\selectfont,
+text width=#3mm
+]
+at (#1,#2)
+{#5};
+
+}
+
+% Простая подпись
+
+\newcommand{\KTDSignature}[5]{
+
+\textbf{#1}
+
+\vspace{2mm}
+
+#2
+
+\vspace{2mm}
+
+#3
+
+\vspace{9mm}
+
+\underline{\hspace{38mm}}
+\hspace{2mm}
+#4
+
+\vspace{2mm}
+
+«\underline{\hspace{8mm}}»
+\underline{\hspace{18mm}}
+#5
+
+}
+
+% Ячейка таблицы
+
+\newcommand{\KTDCell}[7]{
+
+\KTDRect{#1}{#2}{#3}{#4}
+
+\KTDText
+{#1+1}
+{#2-1}
+{#5}
+{left}
+{#6}
+{#7}
+
+}

@@ -1,0 +1,49 @@
+# Python
+
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+
+.venv/
+venv/
+
+# PyCharm
+
+.idea/
+
+# Python cache
+
+.pytest_cache/
+.mypy_cache/
+
+# Build
+
+build/
+
+# LaTeX
+
+*.aux
+*.log
+*.toc
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Input
+
+projects/*/input/
+
+# Output
+
+projects/*/output/
+
+# Temporary build
+
+projects/*/build/
+
+# Environment
+
+.env
