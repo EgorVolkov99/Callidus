@@ -1,0 +1,31 @@
+\COMMENT{ templates/sections/disposal_info.tex.j2 }
+\label{sec:disposal}
+\textbf{\fontsize{14}{21}\selectfont \VAR{disposal.sec_num}. Сведения об утилизации / Disposal information}
+
+\vspace{4mm}
+\fontsize{14}{21}\selectfont
+Изделие не содержит материалов, представляющих опасность для жизни, здоровья людей и окружающей среды после окончания срока службы.
+
+The product does not contain materials hazardous to life, health and the environment after the end of its service life.
+
+\noindent\fontsize{12}{18}\textbf{Таблица \VAR{disposal.sec_num} – Сведения об утилизации оборудования / Table \VAR{disposal.sec_num} – Information on equipment utilization}
+
+\vspace{2mm}
+\noindent\fontsize{11}{13.75}\selectfont
+\begin{tabularx}{\textwidth}{|p{2.5cm}|X|p{5.5cm}|}
+    \hline
+    \rowcolor{graybg}
+
+    \BLOCK{ for key in ["Дата / Date", "Сведения об утилизации / Disposal information", "Примечание / Note"] }%
+        \parbox[c][1.5cm][c]{\hsize}{\centering \textbf{\VAR{key | latex}}}%
+        \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+    \BLOCK{ endfor } \\ \hline
+
+    \BLOCK{ for row_idx in range(9) }%
+        \BLOCK{ for col_idx in range(3) }%
+            \parbox[c][2cm][c]{\hsize}{}%
+            \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+        \BLOCK{ endfor } \\ \hline
+    \BLOCK{ endfor }
+
+\end{tabularx}

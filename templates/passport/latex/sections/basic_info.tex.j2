@@ -1,0 +1,39 @@
+\COMMENT{ templates/sections/basic_info.tex.j2 }
+\label{sec:basic_info}
+\textbf{\fontsize{14}{21}\selectfont \VAR{basic_info.sec_num}. Основные сведения об изделии / Basic product information}
+
+\vspace{4mm}
+\fontsize{14}{21}\selectfont
+Основные сведения об изделии приведены в Таблице \VAR{basic_info.sec_num}.
+
+\noindent\fontsize{12}{18}\textbf{Таблица \VAR{basic_info.sec_num} – Основные сведения об изделии}
+
+\vspace{2mm}
+\noindent\fontsize{11}{13.75}\selectfont
+\renewcommand{\arraystretch}{1.5}{
+\begin{tabular}{|>{\columncolor{graybg}\bfseries}m{6.7cm}|m{10cm}|}
+    \hline
+    \BLOCK{ for item in basic_info.rus }
+        \VAR{item.name | latex} & \VAR{item.value | latex} \\
+        \hline
+    \BLOCK{ endfor }
+\end{tabular}
+}
+
+\newpage
+\fontsize{14}{21}\selectfont
+Basic product information is provided in Table \VAR{basic_info.sec_num}.
+
+\noindent\fontsize{12}{18}\textbf{Продолжение таблицы \VAR{basic_info.sec_num} / Continuation of Table \VAR{basic_info.sec_num}}
+
+\vspace{2mm}
+\noindent\fontsize{11}{13.75}\selectfont
+\renewcommand{\arraystretch}{1.5}{
+\begin{tabular}{|>{\columncolor{graybg}\bfseries}m{6.25cm}|m{10.45cm}|}
+    \hline
+    \BLOCK{ for item in basic_info.eng }
+        \VAR{item.name | latex} & \VAR{item.value | latex} \\
+        \hline
+    \BLOCK{ endfor }
+\end{tabular}
+}

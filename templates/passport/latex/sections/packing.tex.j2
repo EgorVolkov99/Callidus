@@ -1,0 +1,37 @@
+\COMMENT{ templates/sections/packing.tex.j2 }
+\label{sec:packing}
+\textbf{\fontsize{14}{21}\selectfont \VAR{packing.sec_num}. Свидетельство об упаковывании / Certificate of packing}
+
+\vspace{4mm}
+\fontsize{14}{21}\selectfont
+Условия хранения оборудования по \textbf{ГОСТ 15150} соответствуют климатическому исполнению \textbf{\VAR{unit.climate | latex}} категории размещения \textbf{\VAR{unit.placement | latex}}%
+\BLOCK{ if unit.tz_code }%
+ (согласно \textbf{\VAR{unit.tz_code | latex}})
+\BLOCK{ endif }%
+.
+
+\VAR{unit.product_name_rus | latex} \textbf{\VAR{unit.product_model | latex}}, зав. № \rule{3cm}{0.4pt} код KKS \textbf{\VAR{unit.kks_code | latex}} упакован согласно требованиям, предусмотренным в конструкторской документации%
+\BLOCK{ if unit.tz_code }%
+ (техническом задании \textbf{\VAR{unit.tz_code | latex}})
+\BLOCK{ endif }%
+.
+
+\vspace{6mm}
+Storage conditions of the equipment according to \textbf{ГОСТ 15150} correspond to climatic version \textbf{\VAR{unit.climate}} and placement category \textbf{\VAR{unit.placement}}%
+\BLOCK{ if unit.tz_code }%
+ (as per \textbf{\VAR{unit.tz_code | latex}})
+\BLOCK{ endif }%
+.
+
+\VAR{unit.product_name_eng | latex} \textbf{\VAR{unit.product_model | latex}}, serial no. \rule{3cm}{0.4pt} \textbf{\VAR{unit.kks_code | latex}} KKS code  is packed according to the requirements stipulated in the design documentation%
+\BLOCK{ if unit.tz_code }%
+ (terms of reference \textbf{\VAR{unit.tz_code | latex}})
+\BLOCK{ endif }%
+.
+
+\vspace{10mm}
+\noindent\fontsize{8}{10}\selectfont
+\begin{tabularx}{\textwidth}{c c c c}
+    \underline{\hspace{4cm}} & \underline{\hspace{4cm}} & \underline{\hspace{4cm}} & \underline{\hspace{3cm}} \\
+    (должность / position) & (подпись / signature) & (расшифровка подписи / initials) & (дата / date) \\
+\end{tabularx}

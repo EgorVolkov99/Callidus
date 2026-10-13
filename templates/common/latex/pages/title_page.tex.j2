@@ -1,0 +1,46 @@
+\COMMENT{ templates/pages/title_page.tex.j2 }
+\fontsize{11}{16.5}\selectfont
+ОКПД 2: \VAR{variables.okpd_code} / OKPD 2: \VAR{variables.okpd_code}
+
+\vspace{5mm}
+
+\begin{center}
+    \fontsize{13}{19.5}\selectfont
+    \VAR{variables.company_full_name_rus} \\
+    \vspace{2mm}
+    \VAR{variables.company_full_name_eng} \\
+    \vspace{2mm}
+    \fontsize{11}{16.5}\selectfont
+    (\VAR{variables.company_short_name_rus}) / (\VAR{variables.company_short_name_eng})
+
+    \vspace{15mm}
+
+    \fontsize{16}{24}\bfseries\selectfont
+    \VAR{unit.product_name_rus} \\
+    \fontsize{14}{21}\normalfont\selectfont
+    (\VAR{unit.kks_code}) \\
+    \vspace{5mm}
+    \fontsize{18}{27}\bfseries\selectfont
+    Паспорт \\
+    \fontsize{14}{21}\normalfont\selectfont
+    \VAR{variables.passport_code} \\
+
+    \vspace{10mm}
+
+    \fontsize{16}{24}\bfseries\selectfont
+    \VAR{unit.product_name_eng} \\
+    \fontsize{14}{21}\normalfont\selectfont
+    (\VAR{unit.kks_code}) \\
+    \vspace{5mm}
+    \fontsize{18}{27}\bfseries\selectfont
+    Passport \\
+    \fontsize{14}{21}\normalfont\selectfont
+    \VAR{variables.passport_code}
+
+    \vspace{10mm}
+
+    \fontsize{11}{16.5}\selectfont
+    Количество листов \pageref{LastPage} / Number of sheets \pageref{LastPage} \\
+    \vspace{5mm}
+    \textbf{ДЛЯ АЭС / FOR NPP}
+\end{center}

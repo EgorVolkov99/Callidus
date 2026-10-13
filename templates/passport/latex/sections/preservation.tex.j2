@@ -1,0 +1,35 @@
+\COMMENT{ templates/sections/preservation.tex.j2 }
+\label{sec:preservation}
+\textbf{\fontsize{14}{21}\selectfont \VAR{preservation.sec_num}. Консервация / Preservation}
+
+\vspace{4mm}
+\fontsize{14}{21}\selectfont
+Сведения о проведенных консервационных работах приведены в Таблице \VAR{preservation.sec_num}.
+
+Information on preservation is given in the Table \VAR{preservation.sec_num}.
+
+\noindent\fontsize{12}{18}\textbf{Таблица \VAR{preservation.sec_num} – Сведения о консервации / Table \VAR{scope_of_delivery.sec_num} – Information on preservation}
+
+\vspace{2mm}
+\noindent\fontsize{11}{13.75}\selectfont
+\begin{tabularx}{\textwidth}{|
+    >{\centering\arraybackslash}p{1.1cm} |
+    >{\centering\arraybackslash}X |
+    >{\centering\arraybackslash}p{3cm} |
+    >{\centering\arraybackslash}p{4cm} |}
+    \hline
+    \rowcolor{graybg}
+
+    \BLOCK{ for key in ["Дата / Date", "Наименование работы / Work name", "Срок действия, годы / Validity, years", "Должность, фамилия, подпись / Position, name, signature",] }%
+        \parbox[c][1.5cm][c]{\hsize}{\centering \textbf{\VAR{key | latex}}}%
+        \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+    \BLOCK{ endfor } \\ \hline
+
+    \BLOCK{ for row_idx in range(13) }%
+        \BLOCK{ for col_idx in range(4) }%
+            \parbox[c][1.5cm][c]{\hsize}{}%
+            \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+        \BLOCK{ endfor } \\ \hline
+    \BLOCK{ endfor }
+
+\end{tabularx}

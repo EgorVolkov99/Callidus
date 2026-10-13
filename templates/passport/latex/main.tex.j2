@@ -1,0 +1,138 @@
+\COMMENT{ templates/main.tex.j2 }
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usepackage{lastpage}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{rotating}
+\usepackage{hhline}
+
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+\setotherlanguage{english}
+
+\definecolor{graybg}{HTML}{F2F2F2}
+\setlength{\parindent}{1cm}
+\pagestyle{empty}
+
+\begin{document}
+
+\BLOCK{ include 'common/document_frame.tex.j2' }
+\BLOCK{ include 'common/large_stamp.tex.j2' }
+\BLOCK{ include 'common/small_stamp.tex.j2' }
+
+% ================= МАКРОСЫ УПРАВЛЕНИЯ СТРАНИЦАМИ =================
+\newcommand{\SetVerticalPage}{%
+    \clearpage
+    \pdfpagewidth=210mm \pdfpageheight=297mm
+    \paperwidth=210mm \paperheight=297mm
+    \textwidth=175mm \textheight=259mm
+    \oddsidemargin=-0.4mm \evensidemargin=-0.4mm
+    \topmargin=-10.4mm \headheight=0pt \headsep=0pt
+    \vsize=259mm \hsize=175mm \linewidth=175mm \columnwidth=175mm
+    \ClearShipoutPictureBG
+    \AddToShipoutPictureBG{\DrawVerticalFrame \DrawSmallStamp}%
+}
+
+\newcommand{\SetHorizontalPage}{%
+    \clearpage
+    \pdfpagewidth=297mm \pdfpageheight=210mm
+    \paperwidth=297mm \paperheight=210mm
+    \textwidth=259mm \textheight=175mm
+    \oddsidemargin=-0.4mm \evensidemargin=-0.4mm
+    \topmargin=0mm \headheight=0pt \headsep=0pt
+    \vsize=175mm \hsize=259mm \linewidth=259mm \columnwidth=259mm
+    \ClearShipoutPictureBG
+    \AddToShipoutPictureBG{\DrawHorizontalFrame \DrawHorizontalSmallStamp}%
+}
+
+% ================= ТИТУЛЬНЫЙ ЛИСТ =================
+\clearpage
+\pdfpagewidth=210mm \pdfpageheight=297mm
+\paperwidth=210mm \paperheight=297mm
+\textwidth=175mm \textheight=267mm
+\oddsidemargin=-0.4mm \evensidemargin=-0.4mm
+\topmargin=-10.4mm \headheight=0pt \headsep=0pt
+\vsize=267mm \hsize=175mm \linewidth=175mm \columnwidth=175mm
+\ClearShipoutPictureBG
+\AddToShipoutPictureBG{\DrawVerticalFrame}
+\BLOCK{ include 'pages/title_page.tex.j2' }
+
+% ================= ПЕРВЫЙ ЛИСТ (СОДЕРЖАНИЕ) =================
+\clearpage
+\textwidth=175mm \textheight=234mm
+\vsize=234mm
+\ClearShipoutPictureBG
+\AddToShipoutPictureBG{\DrawVerticalFrame \DrawLargeStamp}
+\BLOCK{ include 'pages/first_page.tex.j2' }
+
+% ================= ДИНАМИЧЕСКИЕ РАЗДЕЛЫ =================
+\BLOCK{ if basic_info }
+    \SetVerticalPage
+    \BLOCK{ include 'sections/basic_info.tex.j2' }
+\BLOCK{ endif }
+
+\BLOCK{ if technical_data }
+    \SetVerticalPage
+    \BLOCK{ include 'sections/technical_data.tex.j2' }
+\BLOCK{ endif }
+
+\BLOCK{ if main_parts }
+    \SetHorizontalPage
+    \BLOCK{ include 'sections/main_parts.tex.j2' }
+\BLOCK{ endif }
+
+\BLOCK{ if approval_tests }
+    \SetHorizontalPage
+    \BLOCK{ include 'sections/approval_tests.tex.j2' }
+\BLOCK{ endif }
+
+\BLOCK{ if scope_of_delivery }
+    \SetVerticalPage
+    \BLOCK{ include 'sections/scope_of_delivery.tex.j2' }
+\BLOCK{ endif }
+
+\BLOCK{ if warranties }
+    \SetVerticalPage
+    \BLOCK{ include 'sections/warranties.tex.j2' }
+\BLOCK{ endif }
+
+\BLOCK{ if preservation }
+    \SetVerticalPage
+    \BLOCK{ include 'sections/preservation.tex.j2' }
+\BLOCK{ endif }
+
+\BLOCK{ if packing }
+    \SetVerticalPage
+    \BLOCK{ include 'sections/packing.tex.j2' }
+\BLOCK{ endif }
+
+\BLOCK{ if deviations }
+    \SetVerticalPage
+    \BLOCK{ include 'sections/deviations_list.tex.j2' }
+\BLOCK{ endif }
+
+\BLOCK{ if conclusion }
+    \SetVerticalPage
+    \BLOCK{ include 'sections/conclusion.tex.j2' }
+\BLOCK{ endif }
+
+\BLOCK{ if disposal }
+    \SetVerticalPage
+    \BLOCK{ include 'sections/disposal_info.tex.j2' }
+\BLOCK{ endif }
+
+\BLOCK{ if not revision_sheet }
+    \SetVerticalPage
+    \BLOCK{ include 'sections/revision.tex.j2' }
+\BLOCK{ endif }
+
+\end{document}

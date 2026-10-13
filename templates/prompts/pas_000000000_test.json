@@ -1,0 +1,324 @@
+{
+  "metadata": {
+    "type": "passport",
+    "kks": "00XXX00XX000",
+    "equipment": "Test_test",
+    "document_kks": "",
+    "document_designation": "00XXX00XX000 ПС"
+  },
+  "company": {
+    "okpd_code": "00.00.00.000",
+    "company_full_name_rus": "ПОЛНОЕ НАЗВАНИЕ КОМПАНИИ ПОСТАВЩИКА",
+    "company_full_name_eng": "COMPANY SUPPLIER FULL NAME",
+    "company_short_name_rus": "КРАТКОЕ НАЗВАНИЕ КОМПАНИИ ПОСТАВЩИКА",
+    "company_short_name_eng": "COMPANY SUPPLIER SHORT NAME",
+    "designer_rus": "Волков",
+    "designer_eng": "Volkov",
+    "inspector_rus": "Медведченкова",
+    "inspector_eng": "Medvedchenkova",
+    "approver_rus": "Киселёв",
+    "approver_eng": "Kiselev",
+    "approve_date": "33.33.33",
+    "inspection_date": "32.32.32",
+    "design_date": "31.31.31",
+    "registration_date": "30.30.30",
+    "inv_num": "ТДГУ-0000-0000"
+  },
+  "unit": {
+    "kks_code": "00XXX00XX000",
+    "product_name_rus": "НАЗВАНИЕ ОБОРУДОВАНИЯ",
+    "product_name_eng": "EQUIPMENT NAME",
+    "product_name_2_rus": "название оборудования",
+    "product_name_2_eng": "equipment name",
+    "product_brand": "БРЕНД",
+    "product_model": "МОДЕЛЬ БРЕНДА",
+    "climate": "ТТТ",
+    "placement": "000",
+    "manual_code": "00XXX00XX000 РЭ",
+    "rr1_code": "00XXX00XX000 РР1",
+    "rr2_code": "00XXX00XX000 РР2",
+    "sb_code": "00XXX00XX000 СБ",
+    "tz_code": "00XXX00XX000 ТЗ",
+    "warranty_text_rus": "_____ лет",
+    "warranty_text_eng": "_____ years"
+  },
+  "basic_info": {
+    "rus": [
+      {
+        "name": "Наименование",
+        "value": "НАЗВАНИЕ ОБОРУДОВАНИЯ"
+      },
+      {
+        "name": "Номер чертежа",
+        "value": "00XXX00XX000 СБ"
+      },
+      {
+        "name": "Марка изделия",
+        "value": "БРЕНД"
+      },
+      {
+        "name": "Модель изделия",
+        "value": "МОДЕЛЬ БРЕНДА"
+      },
+      {
+        "name": "Документ на изготовление и поставку",
+        "value": "00XXX00XX000 ТЗ"
+      },
+      {
+        "name": "Изготовитель, адрес",
+        "value": "НАИМЕНОВАЕНИЕ КОМПАНИИ ИЗГОТОВИТЕЛЯ, ГОРОД, АДРЕС"
+      },
+      {
+        "name": "Поставщик, адрес",
+        "value": "НАИМЕНОВАЕНИЕ КОМПАНИИ ПОСТАВЩИКА, ГОРОД, АДРЕС"
+      },
+      {
+        "name": "Код KKS",
+        "value": "00XXX00XX000"
+      },
+      {
+        "name": "Заводской номер",
+        "value": "00XXX00XX000"
+      },
+      {
+        "name": "Назначение",
+        "value": "ОПИСАНИЕ НАЗНАЧЕНИЯ ОПИСАНИЕ НАЗНАЧЕНИЯ ОПИСАНИЕ НАЗНАЧЕНИЯ ОПИСАНИЕ НАЗНАЧЕНИЯ ОПИСАНИЕ НАЗНАЧЕНИЯ ОПИСАНИЕ НАЗНАЧЕНИЯ ОПИСАНИЕ НАЗНАЧЕНИЯ ОПИСАНИЕ НАЗНАЧЕНИЯ"
+      },
+      {
+        "name": "Информация о лицензии",
+        "value": "ИНФОРМАЦИЯ О ЛИЦЕНЗИИ ИНФОРМАЦИЯ О ЛИЦЕНЗИИ ИНФОРМАЦИЯ О ЛИЦЕНЗИИ ИНФОРМАЦИЯ О ЛИЦЕНЗИИ ИНФОРМАЦИЯ О ЛИЦЕНЗИИ ИНФОРМАЦИЯ О ЛИЦЕНЗИИ ИНФОРМАЦИЯ О ЛИЦЕНЗИИ ИНФОРМАЦИЯ О ЛИЦЕНЗИИ ИНФОРМАЦИЯ О ЛИЦЕНЗИИ"
+      }
+    ],
+    "eng": [
+      {
+        "name": "Item",
+        "value": "EQUIPMENT NAME"
+      },
+      {
+        "name": "Drawing designation",
+        "value": "00XXX00XX000 СБ"
+      },
+      {
+        "name": "Product brand",
+        "value": "PRODUCT BRAND"
+      },
+      {
+        "name": "Product model",
+        "value": "PRODUCT MODEL"
+      },
+      {
+        "name": "Document for the manufacture and delivery",
+        "value": "00XXX00XX000 ТЗ"
+      },
+      {
+        "name": "Manufacturer, address",
+        "value": "MANUFACTURER NAME, CITY, ADDRESS"
+      },
+      {
+        "name": "Supplier, address",
+        "value": "SUPPLIER NAME, CITY, ADDRESS"
+      },
+      {
+        "name": "ККS code",
+        "value": "00XXX00XX000"
+      },
+      {
+        "name": "Serial number",
+        "value": "00XXX00XX000"
+      },
+      {
+        "name": "Assignment",
+        "value": "ASSIGNMENT TEXT ASSIGNMENT TEXT ASSIGNMENT TEXT ASSIGNMENT TEXT ASSIGNMENT TEXT ASSIGNMENT TEXT ASSIGNMENT TEXT ASSIGNMENT TEXT ASSIGNMENT TEXT"
+      },
+      {
+        "name": "License information",
+        "value": "LICENSE INFORMATION LICENSE INFORMATION LICENSE INFORMATION LICENSE INFORMATION LICENSE INFORMATION LICENSE INFORMATION LICENSE INFORMATION LICENSE INFORMATION LICENSE INFORMATION"
+      }
+    ]
+  },
+  "technical_data": {
+    "rus": {
+      "Классификационные параметры оборудования АЭС": {
+        "Класс безопасности по НП-001": "Не классифицируется",
+        "Группа оборудования по НП-089-15": "Не классифицируется",
+        "Категория сейсмостойкости по НП-031-01": "Не классифицируется"
+      },
+      "Основные рабочие параметры": {
+        "Измеряемая среда": "Жидкие среды (Вода, жидкие технологические среды)",
+        "Тип присоединения": "Фланцевый (Ф1)",
+        "Диапазон измерений объемного расхода, м³/ч": "в соответствии с кодом заказа",
+        "Максимальное избыточное давление рабочей среды, МПа": "1,6",
+        "Выходной сигнал": "4 - 20 мА",
+        "Напряжение питания, В": "от 10 до 30 В пост. тока",
+        "Класс точности": "А",
+        "Относится к средствам измерений (СИ)": "Да",
+        "Номер в Госреестре СИ": "86309-22"
+      },
+      "Параметры окружающей среды": {
+        "Температура окружающей среды, °С": "от минус 40 до плюс 85",
+        "Температура измеряемой среды, °С": "от минус 40 до плюс 85",
+        "Степень защиты оболочки": "IP65 / IP67"
+      },
+      "Массогабаритные характеристики": {
+        "Масса, кг, не более": "-",
+        "Номинальный диаметр (Ду), мм": "32"
+      },
+      "Показатели надежности": {
+        "Средний срок службы, лет": "10",
+        "Средняя наработка на отказ, ч": "100 000",
+        "Межповерочный интервал, лет": "4"
+      }
+    },
+    "eng": {
+      "NPP equipment classification parameters": {
+        "Safety class according to NP-001": "Not classified",
+        "Equipment group according to NP-089-15": "Not classified",
+        "Seismic category according to NP-031-01": "Not classified"
+      },
+      "Basic operating parameters": {
+        "Measured medium": "Liquid media (Water, liquid process media)",
+        "Connection type": "Flanged (F1)",
+        "Liquid volumetric flow rate measuring range, m³/h": "according to order code",
+        "Maximum working overpressure, MPa": "1.6",
+        "Output signal": "4 - 20 mA",
+        "Power supply voltage, V": "10 to 30 V DC",
+        "Accuracy class": "A",
+        "Measuring instrument": "Yes",
+        "State Register number": "86309-22"
+      },
+      "Environmental parameters": {
+        "Ambient temperature, °C": "from minus 40 to plus 85",
+        "Working medium temperature, °C": "from minus 40 to plus 85",
+        "Ingress protection rating": "IP65 / IP67"
+      },
+      "Dimensions and weight": {
+        "Nominal diameter (DN), mm": "32"
+      },
+      "Reliability parameters": {
+        "Average service life, years": "10",
+        "Mean time between failures, h": "100,000",
+        "Calibration interval, years": "4"
+      }
+    }
+  },
+  "main_parts": null,
+  "approval_tests": {
+    "rus": {
+      "Вид испытаний": [
+        "Визуальный и измерительный контроль",
+        "Проверка комплектности",
+        "Проверка электрического сопротивления изоляции и электрической прочности изоляции",
+        "Метрологический контроль"
+      ],
+      "Среда испытательная": null,
+      "Давление испытаний, МПа": null,
+      "Температура испытаний, °C": null,
+      "Результаты испытаний\nпо документации\nфактические:": [
+        "Поверхность без механических повреждений. Маркировка четкая и читаемая.",
+        "В соответствии с разделом «Комплектность» паспорта.",
+        "Не менее 20 МОм. Приложение испытательного напряжения в течение 1 мин. Пробой и перекрытие не допускаются.",
+        "Не более ±0,5 %."
+      ]
+    },
+    "eng": {
+      "Type of test": [
+        "Visual and measuring control",
+        "Checking the completeness of the set",
+        "Checking the electrical resistance of the insulation and the electrical strength of the insulation",
+        "Metrological control"
+      ],
+      "Test medium": null,
+      "Test pressure, MPa": null,
+      "Test temperature, not less than, °C": null,
+      "Test results\naccording to documentation\nactual:": [
+        "Surface without mechanical damage. Marking is clear and readable.",
+        "In accordance with the «Scope of delivery» section of the passport.",
+        "Not less than 20 MΩ (in normal climatic conditions). Applying the test voltage for 1 min. No breakdown or overvoltage is allowed.",
+        "Not more than ±0.5%."
+      ]
+    }
+  },
+  "scope_of_delivery": {
+    "units_set": {
+      "rus": {
+        "Обозначение": [
+          "ЭМИС-ВИХРЬ 200-032-Б-Ж-НН-Ф1-1,6-85-Т-А-БН-ГП"
+        ],
+        "Наименование": [
+          "Расходомер вихревой"
+        ],
+        "Серийный номер": [
+          ""
+        ],
+        "KKS code": [
+          "20KPG33CF001"
+        ],
+        "Qty": [
+          1
+        ]
+      },
+      "eng": {
+        "Designation": [
+          "ЭМИС-ВИХРЬ 200-032-Б-Ж-НН-Ф1-1,6-85-Т-А-БН-ГП"
+        ],
+        "Description": [
+          "Vortex flowmeter"
+        ],
+        "Serial number": [
+          ""
+        ],
+        "KKS code": [
+          "20KPG33CF001"
+        ],
+        "Qty": [
+          1
+        ]
+      }
+    },
+    "document_set": {
+      "rus": {
+        "Обозначение": [
+          "20KPG33CF001 ПС",
+          "20KPG33CF001 РЭ"
+        ],
+        "Наименование": [
+          "Паспорт",
+          "Руководство по эксплуатации"
+        ],
+        "Кол-во": [
+          1,
+          1
+        ],
+        "Примечание": [
+          "",
+          ""
+        ]
+      },
+      "eng": {
+        "Designation": [
+          "20KPG33CF001 ПС",
+          "20KPG33CF001 РЭ"
+        ],
+        "Description": [
+          "Passport",
+          "Operation manual"
+        ],
+        "Qty": [
+          1,
+          1
+        ],
+        "Note": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "warranties": true,
+  "preservation": true,
+  "packing": true,
+  "deviations": true,
+  "conclusion": true,
+  "disposal": true,
+  "revision_sheet": true
+}

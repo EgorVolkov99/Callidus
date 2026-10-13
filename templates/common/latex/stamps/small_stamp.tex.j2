@@ -1,0 +1,75 @@
+\COMMENT{ templates/common/small_stamp.tex.j2 }
+
+\providecommand{\DrawSmallStamp}{%
+    \AddToShipoutPictureBG*{%
+        \begin{tikzpicture}[x=1mm, y=1mm, remember picture, overlay, shift={([xshift=20mm, yshift=5mm]current page.south west)}]
+            \draw[line width=1pt] (0,0) rectangle (185,15);
+            \draw[line width=1pt] (65,0) -- (65,15);
+            \draw[line width=1pt] (175,0) -- (175,15);
+
+            \draw[line width=1pt] (7,0) -- (7,15);
+            \draw[line width=1pt] (17,0) -- (17,15);
+            \draw[line width=1pt] (40,0) -- (40,15);
+            \draw[line width=1pt] (55,0) -- (55,15);
+            \draw[line width=1pt] (0,5) -- (65,5);
+            \draw[line width=1pt] (0,10) -- (65,10);
+            \draw[line width=1pt] (175,10) -- (185,10);
+            \draw[line width=1pt] (175,5) -- (185,5);
+
+            \node[font=\fontsize{10}{15}\selectfont] at (3.5, 2.5) {Изм.};
+            \node[font=\fontsize{10}{15}\selectfont] at (12, 2.5) {Лист};
+            \node[font=\fontsize{10}{15}\selectfont] at (28.5, 2.5) {№ докум.};
+            \node[font=\fontsize{10}{15}\selectfont] at (47.5, 2.5) {Подп.};
+            \node[font=\fontsize{10}{15}\selectfont] at (60, 2.5) {Дата};
+
+            \node[font=\fontsize{10}{15}\selectfont] at (3.5, 7.5) {Rev.};
+            \node[font=\fontsize{10}{15}\selectfont] at (12, 7.5) {Sheet};
+            \node[font=\fontsize{10}{15}\selectfont] at (28.5, 7.5) {Docum. No};
+            \node[font=\fontsize{10}{15}\selectfont] at (47.5, 7.5) {Signature};
+            \node[font=\fontsize{10}{15}\selectfont] at (60, 7.5) {Date};
+
+            \node[font=\fontsize{14}{21}\selectfont] at (120, 7.5) {\VAR{variables.passport_code}};
+
+            \node[font=\fontsize{10}{15}\selectfont] at (180, 12.5) {Лист};
+            \node[font=\fontsize{10}{15}\selectfont] at (180, 7.5) {Sheet};
+            \node[font=\fontsize{10}{15}\selectfont] at (180, 2.5) {\thepage};
+        \end{tikzpicture}%
+    }%
+}
+
+\providecommand{\DrawHorizontalSmallStamp}{%
+    \AddToShipoutPictureBG*{%
+        \begin{tikzpicture}[x=1mm, y=1mm, remember picture, overlay, shift={([xshift=5mm, yshift=5mm]current page.south west)}]
+            \draw[line width=1pt] (0,0) rectangle (15,185);
+            \draw[line width=1pt] (0,10) -- (15,10);
+            \draw[line width=1pt] (0,120) -- (15,120);
+
+            \draw[line width=1pt] (0,178) -- (15,178);
+            \draw[line width=1pt] (0,168) -- (15,168);
+            \draw[line width=1pt] (0,145) -- (15,145);
+            \draw[line width=1pt] (0,130) -- (15,130);
+            \draw[line width=1pt] (5,120) -- (5,185);
+            \draw[line width=1pt] (10,120) -- (10,185);
+            \draw[line width=1pt] (10,0) -- (10,10);
+            \draw[line width=1pt] (5,0) -- (5,10);
+
+            \node[rotate=-90, font=\fontsize{10}{15}\selectfont] at (2.5, 181.5) {Изм.};
+            \node[rotate=-90, font=\fontsize{10}{15}\selectfont] at (2.5, 173) {Лист};
+            \node[rotate=-90, font=\fontsize{10}{15}\selectfont] at (2.5, 156.5) {№ докум.};
+            \node[rotate=-90, font=\fontsize{10}{15}\selectfont] at (2.5, 137.5) {Подп.};
+            \node[rotate=-90, font=\fontsize{10}{15}\selectfont] at (2.5, 125) {Дата};
+
+            \node[rotate=-90, font=\fontsize{10}{15}\selectfont] at (7.5, 181.5) {Rev.};
+            \node[rotate=-90, font=\fontsize{10}{15}\selectfont] at (7.5, 173) {Sheet};
+            \node[rotate=-90, font=\fontsize{10}{15}\selectfont] at (7.5, 156.5) {Docum. No};
+            \node[rotate=-90, font=\fontsize{10}{15}\selectfont] at (7.5, 137.5) {Signature};
+            \node[rotate=-90, font=\fontsize{10}{15}\selectfont] at (7.5, 125) {Date};
+
+            \node[rotate=-90, font=\fontsize{14}{21}\selectfont] at (7.5, 65) {\VAR{variables.passport_code}};
+
+            \node[rotate=-90, font=\fontsize{10}{15}\selectfont] at (12.5, 5) {Лист};
+            \node[rotate=-90, font=\fontsize{10}{15}\selectfont] at (7.5, 5) {Sheet};
+            \node[rotate=-90, font=\fontsize{10}{15}\selectfont] at (2.5, 5) {\thepage};
+        \end{tikzpicture}%
+    }%
+}

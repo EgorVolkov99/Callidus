@@ -1,49 +1,28 @@
-# Python
-
-__pycache__/
-*.py[cod]
-*.pyo
-
-# Virtual environment
-
+# Виртуальное окружение
 .venv/
 venv/
 
-# PyCharm
+# Кэш Python и скомпилированные файлы
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
 
+# Среды разработки (IDE)
 .idea/
+.vscode/
+*.swp
 
-# Python cache
+# Системные файлы
+.DS_Store
+Thumbs.db
 
-.pytest_cache/
-.mypy_cache/
-
-# Build
-
-build/
-
-# LaTeX
-
-*.aux
+# Логи
 *.log
-*.toc
-*.out
-*.synctex.gz
-*.fls
-*.fdb_latexmk
 
-# Input
-
-projects/*/input/
-
-# Output
-
-projects/*/output/
-
-# Temporary build
-
-projects/*/build/
-
-# Environment
-
+# Переменные окружения (секреты)
 .env
+
+# Файлы проектов
+storage/
+workspace/

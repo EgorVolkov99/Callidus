@@ -1,0 +1,23 @@
+\COMMENT{ templates/sections/warranties.tex.j2 }
+\label{sec:warranties}
+\textbf{\fontsize{14}{21}\selectfont \VAR{warranties.sec_num}. Гарантии изготовителя / Manufacturer's warranties}
+
+\vspace{4mm}
+\fontsize{14}{21}\selectfont
+Изготовитель гарантирует работоспособность \VAR{unit.product_name_2_rus | latex} \textbf{ \VAR{unit.product_model | latex}} при соблюдении потребителем условий эксплуатации, транспортирования, хранения и технического обслуживания%
+\BLOCK{ if unit.manual_code }%
+, указанных в руководстве по эксплуатации \textbf{\VAR{unit.manual_code | latex}}%
+\BLOCK{ endif }%
+.
+
+Гарантийный срок: \VAR{warranties.operation_months | default(unit.warranty_text_rus | default('_____')) | latex}.
+
+\vspace{6mm}
+\fontsize{14}{21}\selectfont
+The manufacturer guarantees the performance of the \VAR{unit.product_name_2_eng | latex} \textbf{ \VAR{unit.product_model | latex}} if the consumer complies with the conditions of operation, transportation, storage and maintenance%
+\BLOCK{ if unit.manual_code }%
+, specified in the operating manual \textbf{\VAR{unit.manual_code | latex}}%
+\BLOCK{ endif }%
+.
+
+Warranty period : \VAR{warranties.operation_months_eng | default(unit.warranty_text_eng | default('_____')) | latex}.

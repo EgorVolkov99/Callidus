@@ -1,0 +1,35 @@
+\COMMENT{ templates/sections/deviations_list.tex.j2 }
+\label{sec:deviations}
+\textbf{\fontsize{14}{21}\selectfont \VAR{deviations.sec_num}. Перечень отклонений от технической документации / List of deviations from technical documentation}
+
+\vspace{4mm}
+\fontsize{14}{21}\selectfont
+Сведения об обнаруженных отклонениях от технической документации заносятся в таблицу \VAR{deviations.sec_num}.
+
+Information about detected deviations from the technical documentation is entered into the Table \VAR{deviations.sec_num}.
+
+\noindent\fontsize{12}{18}\textbf{Таблица \VAR{deviations.sec_num} – Перечень отклонений от технической документации / Table \VAR{deviations.sec_num} – List of deviations from technical documentation}
+
+\vspace{2mm}
+\noindent\fontsize{10}{12.5}\selectfont
+\begin{tabularx}{\textwidth}{|
+    >{\centering\arraybackslash}p{4cm} |
+    >{\centering\arraybackslash}X |
+    >{\centering\arraybackslash}p{3cm} |
+    >{\centering\arraybackslash}p{3cm} |}
+    \hline
+    \rowcolor{graybg}
+
+    \BLOCK{ for key in ["Наименование и обозначение детали, сборочной единицы / Name and designation of part, assembly unit", "Краткое содержание отклонения, несоответствия / Summary deviations, discrepancies", "Номер отчета по несоответствию / Non-conformance report number", "Номер разрешения, дата / Change authorization, date",] }%
+        \parbox[c][2.5cm][c]{\hsize}{\centering \textbf{\VAR{key | latex}}}%
+        \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+    \BLOCK{ endfor } \\ \hline
+
+    \BLOCK{ for row_idx in range(8) }%
+        \BLOCK{ for col_idx in range(4) }%
+            \parbox[c][2cm][c]{\hsize}{}%
+            \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+        \BLOCK{ endfor } \\ \hline
+    \BLOCK{ endfor }
+
+\end{tabularx}

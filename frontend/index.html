@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callidus | Генерация ЭД</title>
+    <!-- Подключаем TailwindCSS для современного дизайна без написания CSS руками -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen text-gray-800 font-sans">
+
+<!-- Навигация -->
+<nav class="bg-white shadow-md p-4">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <div class="text-2xl font-bold text-blue-600">Callidus Engine</div>
+        <div class="text-sm text-gray-500">Система автоматизированной разработки КД и ЭД</div>
+    </div>
+</nav>
+
+<!-- Основной контент -->
+<main class="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+
+    <form id="generateForm" class="space-y-6">
+
+        <!-- Выбор проекта, типа документа и шаблона -->
+        <div class="grid grid-cols-3 gap-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Проект</label>
+                <select id="projectSelect" name="project_name"
+                        class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+                    <option value="NIKIMT_KIP">НИКИМТ (КИПиА)</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Тип документа</label>
+                <select id="docType" name="doc_type" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+                    <option value="passport">Паспорт (ПС)</option>
+                    <option value="manual">Руководство (РЭ)</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Шаблон Word</label>
+                <select id="templateSelect" name="template_name"
+                        class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+                    <!-- Опции будут добавлены через JavaScript -->
+                </select>
+            </div>
+        </div>
+
+        <!-- Загрузка файлов -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Исходные данные (.json)</label>
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:bg-gray-50 transition">
+                <input type="file" id="jsonFiles" name="files" multiple accept=".json" class="hidden">
+                <button type="button" onclick="document.getElementById('jsonFiles').click()"
+                        class="bg-blue-100 text-blue-700 px-4 py-2 rounded font-medium">
+                    Выбрать файлы
+                </button>
+                <p id="fileCount" class="text-sm text-gray-500 mt-2">Файлы не выбраны</p>
+            </div>
+        </div>
+
+        <!-- Настройки вывода -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Форматы на выходе</label>
+            <div class="flex space-x-6">
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" name="need_docx" value="true" class="rounded text-blue-600" checked>
+                    <span>DOCX (Word)</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" name="need_pdf" value="true" class="rounded text-blue-600" checked>
+                    <span>PDF</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" name="need_zip" value="true" class="rounded text-blue-600">
+                    <span>Собрать в ZIP</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Кнопка запуска -->
+        <button type="submit" id="submitBtn"
+                class="w-full bg-blue-600 text-white font-bold py-3 rounded-md hover:bg-blue-700 transition shadow-lg">
+            Запустить генерацию
+        </button>
+    </form>
+
+    <!-- Блок прогресса (скрыт по умолчанию) -->
+    <div id="progressContainer" class="hidden mt-8 border-t pt-6">
+        <h3 class="text-lg font-medium text-gray-800 mb-4">Статус генерации</h3>
+        <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+            <div id="progressBar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+        </div>
+        <p id="statusText" class="text-sm text-gray-600">Инициализация...</p>
+
+        <!-- Ссылки на скачивание появятся здесь -->
+        <div id="downloadLinks" class="mt-4 flex space-x-4"></div>
+    </div>
+
+</main>
+
+<script>
+    // Обновление текста при выборе файлов
+    document.getElementById('jsonFiles').addEventListener('change', function (e) {
+        const count = e.target.files.length;
+        document.getElementById('fileCount').textContent = count > 0 ? `Выбрано файлов: ${count}` : 'Файлы не выбраны';
+    });
+
+    // Обработка отправки формы
+    document.getElementById('generateForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const submitBtn = document.getElementById('submitBtn');
+        const progressContainer = document.getElementById('progressContainer');
+        const statusText = document.getElementById('statusText');
+        const progressBar = document.getElementById('progressBar');
+        const downloadLinks = document.getElementById('downloadLinks');
+
+        // Подготовка UI
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Обработка...';
+        progressContainer.classList.remove('hidden');
+        downloadLinks.innerHTML = '';
+        progressBar.style.width = '10%';
+
+        // Сбор данных формы
+        const formData = new FormData(this);
+
+        try {
+            // 1. Отправляем задачу на сервер
+            const response = await fetch('/api/docs/generate', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+
+            if (data.batch_id) {
+                // 2. Начинаем опрос (Polling) статуса задачи
+                pollStatus(data.batch_id);
+            }
+        } catch (error) {
+            statusText.textContent = '❌ Ошибка сети: ' + error.message;
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Запустить генерацию';
+        }
+
+        // Функция опроса сервера
+        async function pollStatus(batchId) {
+            const interval = setInterval(async () => {
+                const res = await fetch(`/api/docs/status/${batchId}`);
+                const statusData = await res.json();
+
+                statusText.textContent = statusData.global_log;
+
+                // Обновляем прогресс-бар
+                if (statusData.total > 0) {
+                    const percent = ((statusData.completed + statusData.errors) / statusData.total) * 100;
+                    progressBar.style.width = `${Math.max(15, percent)}%`;
+                }
+
+                // Если задача завершена
+                if (statusData.status === 'completed') {
+                    clearInterval(interval);
+                    progressBar.style.width = '100%';
+                    progressBar.classList.replace('bg-blue-600', 'bg-green-500');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Запустить генерацию';
+
+                    // Формируем кнопки скачивания
+                    if (statusData.archive_url) {
+                        downloadLinks.innerHTML = `<a href="${statusData.archive_url}" class="bg-green-100 text-green-700 px-4 py-2 rounded font-medium hover:bg-green-200">📥 Скачать ZIP-архив</a>`;
+                    } else {
+                        if (statusData.pdf_url) {
+                            downloadLinks.innerHTML += `<a href="${statusData.pdf_url}" target="_blank" class="bg-red-100 text-red-700 px-4 py-2 rounded font-medium hover:bg-red-200">📥 Скачать PDF</a>`;
+                        }
+                        if (statusData.docx_url) {
+                            downloadLinks.innerHTML += `<a href="${statusData.docx_url}" class="bg-blue-100 text-blue-700 px-4 py-2 rounded font-medium hover:bg-blue-200">📥 Скачать DOCX</a>`;
+                        }
+                    }
+                }
+            }, 1500); // Опрашиваем каждые 1.5 секунды
+        }
+    });
+
+    // Конфигурация доступных шаблонов для каждого типа
+    const availableTemplates = {
+        passport: [
+            {value: "passport_full_rus-eng.docx", label: "ПС: Двуязычный базовый"},
+            {value: "passport_full_NIKIMT_rus-eng.docx", label: "ПС: Двуязычный базовый (Титульник НИКИМТ)"}
+        ],
+        manual: [
+            {value: "manual_template_compact_rus-eng.docx", label: "РЭ: Двуязычное вертикальное"},
+            {value: "manual_template_compact_NIKIMT_rus-eng.docx", label: "РЭ: Двуязычное вертикальное (Титульник НИКИМТ)"}
+        ]
+    };
+
+    const docTypeSelect = document.getElementById('docType');
+    const templateSelect = document.getElementById('templateSelect');
+
+    // Функция обновления списка шаблонов
+    function updateTemplateOptions() {
+        const selectedType = docTypeSelect.value;
+        const options = availableTemplates[selectedType] || [];
+
+        // Очищаем текущий список
+        templateSelect.innerHTML = '';
+
+        // Заполняем новыми опциями
+        options.forEach(tpl => {
+            const opt = document.createElement('option');
+            opt.value = tpl.value; // Это то, что уйдет на сервер
+            opt.textContent = tpl.label; // Это то, что видит пользователь
+            templateSelect.appendChild(opt);
+        });
+    }
+
+    // Слушаем изменение типа документа
+    docTypeSelect.addEventListener('change', updateTemplateOptions);
+
+    // Инициализируем при первой загрузке страницы
+    updateTemplateOptions();
+</script>
+</body>
+</html>

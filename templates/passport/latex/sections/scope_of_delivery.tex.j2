@@ -1,0 +1,124 @@
+\COMMENT{ templates/sections/scope_of_delivery.tex.j2 }
+\label{sec:scope_of_delivery}
+\textbf{\fontsize{14}{21}\selectfont \VAR{scope_of_delivery.sec_num}. Комплектность / Scope of delivery}
+
+\BLOCK{ if scope_of_delivery.units_set.rus_rows }
+    \vspace{4mm}
+    \fontsize{14}{21}\selectfont
+    Состав комплекта поставки приведен в Таблице \VAR{scope_of_delivery.sec_num}.1.
+
+    \noindent\fontsize{12}{18}\textbf{Таблица \VAR{scope_of_delivery.sec_num}.1 – Комплект поставки изделия / Table \VAR{scope_of_delivery.sec_num}.1 – Unit delivery set}
+
+    \vspace{2mm}
+    \noindent\fontsize{11}{13.75}\selectfont
+    \BLOCK{ set first_row = scope_of_delivery.units_set.rus_rows[0] }
+        \BLOCK{ set col_count = first_row | length }
+            \renewcommand{\arraystretch}{1.5}{
+            \begin{tabularx}{\textwidth}{| *{\VAR{col_count}}{>{\centering\arraybackslash}X|} }
+
+                \hline
+
+                \rowcolor{graybg}
+                \BLOCK{ for key in first_row }%
+                    \parbox[c][1cm][c]{\hsize}{\centering \textbf{\VAR{key | latex}}}%
+                    \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+                \BLOCK{ endfor } \\ \hline\hline
+
+                \BLOCK{ for row in scope_of_delivery.units_set.rus_rows }%
+                    \BLOCK{ for key, val in row.items() }%
+                        \VAR{val | latex}%
+                        \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+                    \BLOCK{ endfor } \\
+
+                    \hline
+                \BLOCK{ endfor }
+            \end{tabularx}
+            }
+
+        \vspace{4mm}
+\fontsize{14}{21}\selectfont
+The contents of the delivery package are listed in the Table \VAR{scope_of_delivery.sec_num}.1.
+
+\noindent\fontsize{12}{18}\textbf{Продолжение таблицы \VAR{scope_of_delivery.sec_num}.1 / Continuation of Table \VAR{scope_of_delivery.sec_num}.1}
+
+\vspace{2mm}
+\noindent\fontsize{11}{13.75}\selectfont
+\BLOCK{ set eng_first_row = scope_of_delivery.units_set.eng_rows[0] }
+    \renewcommand{\arraystretch}{1.5}{
+    \begin{tabularx}{\textwidth}{| *{\VAR{col_count}}{>{\centering\arraybackslash}X|} }
+
+        \hline
+
+        \rowcolor{graybg}
+        \BLOCK{ for key in eng_first_row }%
+            \parbox[c][1cm][c]{\hsize}{\centering \textbf{\VAR{key | latex}}}%
+            \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+        \BLOCK{ endfor } \\ \hline\hline
+
+        \BLOCK{ for row in scope_of_delivery.units_set.eng_rows }%
+            \BLOCK{ for key, val in row.items() }%
+                \VAR{val | latex}%
+                \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+            \BLOCK{ endfor } \\ \hline
+        \BLOCK{ endfor }
+    \end{tabularx}
+    }
+\BLOCK{ endif }
+
+\BLOCK{ if scope_of_delivery.document_set.rus_rows }
+    \vspace{6mm}
+    \fontsize{14}{21}\selectfont
+    Комплектность сопроводительной документации приведена в Таблице \VAR{scope_of_delivery.sec_num}.2.
+
+    \noindent\fontsize{12}{18}\textbf{Таблица \VAR{scope_of_delivery.sec_num}.2 – Комплектность документации / Table \VAR{scope_of_delivery.sec_num}.2 – Documentation delivery set}
+
+    \vspace{2mm}
+    \noindent\fontsize{11}{13.75}\selectfont
+    \BLOCK{ set doc_first_row = scope_of_delivery.document_set.rus_rows[0] }
+        \BLOCK{ set doc_col_count = doc_first_row | length }
+            \renewcommand{\arraystretch}{1.5}{
+            \begin{tabularx}{\textwidth}{| *{\VAR{doc_col_count}}{>{\centering\arraybackslash}X|} }
+                \hline
+                \rowcolor{graybg}
+                \BLOCK{ for key in doc_first_row }%
+                    \parbox[c][1cm][c]{\hsize}{\centering \textbf{\VAR{key | latex}}}%
+                    \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+                \BLOCK{ endfor } \\ \hline\hline
+
+                \BLOCK{ for row in scope_of_delivery.document_set.rus_rows }%
+                    \BLOCK{ for key, val in row.items() }%
+                        \VAR{val | latex}%
+                        \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+                    \BLOCK{ endfor } \\ \hline
+                \BLOCK{ endfor }
+            \end{tabularx}
+            }
+
+    \vspace{4mm}
+    \fontsize{14}{21}\selectfont
+    The scope of the accompanying documentation is listed in the Table \VAR{scope_of_delivery.sec_num}.2.
+
+    \noindent\fontsize{12}{18}\textbf{Продолжение таблицы \VAR{scope_of_delivery.sec_num}.2 / Continuation of Table \VAR{scope_of_delivery.sec_num}.2}
+
+    \vspace{2mm}
+    \noindent\fontsize{11}{13.75}\selectfont
+    \BLOCK{ set doc_eng_first_row = scope_of_delivery.document_set.eng_rows[0] }
+        \renewcommand{\arraystretch}{1.5}{
+        \begin{tabularx}{\textwidth}{| *{\VAR{doc_col_count}}{>{\centering\arraybackslash}X|} }
+            \hline
+            \rowcolor{graybg}
+            \BLOCK{ for key in doc_eng_first_row }%
+                \parbox[c][1cm][c]{\hsize}{\centering \textbf{\VAR{key | latex}}}%
+                \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+            \BLOCK{ endfor } \\ \hline\hline
+
+            \BLOCK{ for row in scope_of_delivery.document_set.eng_rows }%
+                \BLOCK{ for key, val in row.items() }%
+                    \VAR{val | latex}%
+                    \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+                \BLOCK{ endfor } \\ \hline
+            \BLOCK{ endfor }
+        \end{tabularx}
+        }
+
+\BLOCK{ endif }

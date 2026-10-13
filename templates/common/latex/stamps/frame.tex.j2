@@ -1,0 +1,54 @@
+\COMMENT{ templates/common/document_frame.tex.j2 }
+
+\providecommand{\DrawVerticalFrame}{%
+    \begin{tikzpicture}[x=1mm, y=1mm, remember picture, overlay, shift={(current page.south west)}]
+        \draw[line width=1pt] (20, 5) rectangle (205, 292);
+
+        % Боковой штамп
+        \draw[line width=1pt] (8, 5) rectangle (20, 150);
+        \draw[line width=1pt] (13, 5) -- (13, 150);
+        \foreach \y in {30, 65, 90, 115} {
+            \draw[line width=1pt] (8, \y) -- (20, \y);
+        }
+
+        \node[rotate=90, font=\fontsize{10}{12}\selectfont] at (10.5, 17.5) {Инв. № подл.};
+        \node[rotate=90, font=\fontsize{10}{12}\selectfont] at (10.5, 47.5) {Подп. и дата};
+        \node[rotate=90, font=\fontsize{10}{12}\selectfont] at (10.5, 77.5) {Взам. инв. №};
+        \node[rotate=90, font=\fontsize{10}{12}\selectfont] at (10.5, 102.5) {Инв. № дубл.};
+        \node[rotate=90, font=\fontsize{10}{12}\selectfont] at (10.5, 132.5) {Подп. и дата};
+
+        % Значение инвентарного номера и датыиз JSON
+        \BLOCK{ if variables.inv_num }%
+            \node[rotate=90, font=\fontsize{7}{9}\selectfont] at (16.5, 17.5) {\VAR{variables.inv_num | default('')}};
+        \BLOCK{ endif }%
+        \BLOCK{ if variables.registration_date }%
+            \node[rotate=90, font=\fontsize{10}{12}\selectfont] at (16.5, 141) {\VAR{variables.registration_date | default('')}};
+        \BLOCK{ endif }%
+    \end{tikzpicture}%
+}
+
+\providecommand{\DrawHorizontalFrame}{%
+    \begin{tikzpicture}[x=1mm, y=1mm, remember picture, overlay, shift={(current page.south west)}]
+        \draw[line width=1pt] (5, 5) rectangle (292, 190);
+
+        \draw[line width=1pt] (5, 190) rectangle (150, 202);
+        \draw[line width=1pt] (5, 197) -- (150, 197);
+        \foreach \x in {30, 65, 90, 115} {
+            \draw[line width=1pt] (\x, 190) -- (\x, 202);
+        }
+
+        \node[font=\fontsize{10}{12}\selectfont] at (17.5, 199.5) {Инв. № подл.};
+        \node[font=\fontsize{10}{12}\selectfont] at (47.5, 199.5) {Подп. и дата};
+        \node[font=\fontsize{10}{12}\selectfont] at (77.5, 199.5) {Взам. инв. №};
+        \node[font=\fontsize{10}{12}\selectfont] at (102.5, 199.5) {Инв. № дубл.};
+        \node[font=\fontsize{10}{12}\selectfont] at (132.5, 199.5) {Подп. и дата};
+
+        % Значение инвентарного номера и датыиз JSON
+        \BLOCK{ if variables.inv_num }%
+            \node[font=\fontsize{7}{9}\selectfont] at (17.5, 193.5) {\VAR{variables.inv_num | default('')}};
+        \BLOCK{ endif }%
+        \BLOCK{ if variables.registration_date }%
+            \node[font=\fontsize{10}{12}\selectfont] at (141, 193.5) {\VAR{variables.registration_date | default('')}};
+        \BLOCK{ endif }%
+    \end{tikzpicture}%
+}

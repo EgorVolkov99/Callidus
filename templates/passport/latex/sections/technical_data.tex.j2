@@ -1,0 +1,47 @@
+\COMMENT{ templates/sections/technical_data.tex.j2 }
+\label{sec:technical_data}
+\textbf{\fontsize{14}{21}\selectfont \VAR{technical_data.sec_num}. Основные технические данные / Main technical data}
+
+\vspace{4mm}
+\fontsize{14}{21}\selectfont
+Основные классификационные, технические и эксплуатационные характеристики изделия приведены в таблице \VAR{technical_data.sec_num}.
+
+\noindent\fontsize{12}{18}\textbf{Таблица \VAR{technical_data.sec_num} – Основные технические данные изделия / Table \VAR{technical_data.sec_num} – Main technical data}
+
+\vspace{2mm}
+\noindent\fontsize{11}{13.75}\selectfont
+\renewcommand{\arraystretch}{1.5}{
+\begin{tabularx}{\textwidth}{|X|>{\centering\arraybackslash}p{6.5cm}|}
+    \hline
+    \rowcolor{graybg}
+    \parbox[c][1cm][c]{\hsize}{\centering \textbf{Наименование параметра}} & \parbox[c][1cm][c]{\hsize}{\centering \textbf{Значение параметра}} \\ \hline\hline
+    \BLOCK{ for group_name, params in technical_data.rus.items() }%
+        \multicolumn{2}{|c|}{\textbf{\VAR{group_name | latex}}} \\ \hline
+        \BLOCK{ for key, val in params.items() }%
+            \VAR{key | latex} & \VAR{val | latex} \\ \hline
+        \BLOCK{ endfor }%
+    \BLOCK{ endfor }%
+\end{tabularx}
+}
+
+\newpage
+\fontsize{14}{21}\selectfont
+Basic classification, technical and operational characteristics of the product are given in the Table \VAR{technical_data.sec_num}.
+
+\noindent\fontsize{12}{18}\textbf{Продолжение таблицы \VAR{technical_data.sec_num} / Continuation of Table \VAR{technical_data.sec_num}}
+
+\vspace{2mm}
+\noindent\fontsize{11}{13.75}\selectfont
+\renewcommand{\arraystretch}{1.5}{
+\begin{tabularx}{\textwidth}{|X|>{\centering\arraybackslash}p{6.5cm}|}
+    \hline
+    \rowcolor{graybg}
+    \parbox[c][1cm][c]{\hsize}{\centering \textbf{Parameter name}} & \parbox[c][1cm][c]{\hsize}{\centering \textbf{Parameter value}} \\ \hline\hline
+    \BLOCK{ for group_name, params in technical_data.eng.items() }%
+        \multicolumn{2}{|c|}{\textbf{\VAR{group_name | latex}}} \\ \hline
+        \BLOCK{ for key, val in params.items() }%
+            \VAR{key | latex} & \VAR{val | latex} \\ \hline
+        \BLOCK{ endfor }%
+    \BLOCK{ endfor }%
+\end{tabularx}
+}

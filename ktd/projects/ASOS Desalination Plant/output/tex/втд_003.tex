@@ -1,0 +1,694 @@
+\begin{tikzpicture}[remember picture,overlay,x=1mm,y=1mm]
+
+
+% ==========================================================
+% Общая шапка
+% ==========================================================
+
+
+% ==========================================================
+% Верхний адресный блок (последующие страницы)
+% ==========================================================
+
+\node[
+anchor=north east,
+font=\fontsize{9}{9}\selectfont
+]
+at (292,-12)
+{
+Форма ВТД-2
+};
+
+% ==========================================================
+% Основная рамка
+% ==========================================================
+
+\draw[line width=0.4pt]
+(5,-17) rectangle (292,-201);
+
+% ==========================================================
+% Верхняя строка
+% ==========================================================
+
+\draw (5,-17) rectangle (152,-28);
+
+\node[
+align=center,
+text width=147mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (78.5,-22.5)
+{
+КТД0564.000-59085090
+};
+
+\draw (152,-17) rectangle (260,-28);
+
+\node[
+align=center,
+text width=108mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (206,-22.5)
+{
+ВТД0564.000.00
+};
+
+\draw (260,-17) rectangle (292,-28);
+
+\node[
+align=center,
+text width=32mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (276,-22.5)
+{
+Лист 3
+};
+
+% ==========================================================
+% Наименование оборудования
+% ==========================================================
+
+\draw (0,-31) rectangle (287,-38);
+
+\node[
+align=center,
+font=\fontsize{9}{9}\selectfont
+]
+at (143.5,-34.5)
+{
+Эжектор ЭУ-430
+};
+
+% ==========================================================
+% Наименование комплекта
+% ==========================================================
+
+\draw (0,-38) rectangle (287,-45);
+
+\node[
+align=center,
+font=\fontsize{9}{9}\selectfont
+]
+at (143.5,-41.5)
+{
+Ведомость технологических документов
+};
+
+% ==========================================================
+% Шапка ВТД
+% ==========================================================
+
+
+\draw (5,-28) rectangle (19,-32.33);
+
+\node[
+align=center,
+text width=14mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (12,-30.165)
+{В};
+
+\draw (19,-28) rectangle (35,-32.33);
+
+\node[
+align=center,
+text width=16mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (27,-30.165)
+{НПП};
+
+\draw (35,-28) rectangle (292,-32.33);
+
+\node[
+align=left,
+text width=255mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (163.5,-30.165)
+{Обозначение, наименование оборудования/СЕ/Д по КД};
+
+\draw (5,-32.33) rectangle (19,-36.66);
+
+\node[
+align=center,
+text width=14mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (12,-34.495)
+{Ф};
+
+\draw (19,-32.33) rectangle (236,-36.66);
+
+\node[
+align=left,
+text width=215mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (127.5,-34.495)
+{Обозначение, наименование комплекта документации (документов)};
+
+\draw (236,-34.33) rectangle (256,-41);
+
+\node[
+align=center,
+text width=20mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (246,-36.665)
+{Листов};
+
+\draw (256,-32.33) rectangle (292,-41);
+
+\node[
+align=center,
+text width=36mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (274,-36.665)
+{Примечания};
+
+\draw (5,-36.66) rectangle (19,-41);
+
+\node[
+align=center,
+text width=14mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (12,-38.83)
+{Г};
+
+\draw (19,-36.66) rectangle (61,-41);
+
+\node[
+align=center,
+text width=42mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (40,-38.83)
+{Обозначение ТД};
+
+\draw (61,-36.66) rectangle (92.5,-41);
+
+\node[
+align=center,
+text width=31.5mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (76.75,-38.83)
+{Усл. обозн. ТД};
+
+\draw (92.5,-36.66) rectangle (236,-41);
+
+\node[
+align=left,
+text width=161.5mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (174.25,-38.83)
+{Наименование ТД};
+
+
+% ==========================================================
+% Таблица ВТД
+% ==========================================================
+
+% ---------- Колонки ----------
+
+\draw (10,-45)--(10,-194);      % Ф
+\draw (24,-45)--(24,-194);      % Обозначение
+\draw (48,-45)--(48,-194);      % Код
+\draw (228,-45)--(228,-194);    % Наименование
+\draw (246,-45)--(246,-194);    % Кол. листов
+\draw (263,-45)--(263,-194);    % Номер листа
+
+% ==========================================================
+% Строки
+% ==========================================================
+
+
+
+\draw (0,-61)--(287,-61);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-57)
+{
+В02
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-57)
+{
+491.05
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-57)
+{
+
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-57)
+{
+Парогенератор ПГВ-1000МКП с опорами
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-57)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-57)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-57)
+{
+
+};
+
+
+
+\draw (0,-69)--(287,-69);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-65)
+{
+Ф1
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-65)
+{
+КТД0536.002-59085090
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-65)
+{
+
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-65)
+{
+Комплект технологических документов на разуплотнение фланцевых соединений люков коллекторов первого контура
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-65)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-65)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-65)
+{
+
+};
+
+
+
+\draw (0,-77)--(287,-77);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-73)
+{
+Г1
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-73)
+{
+КТП0536.002.01
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-73)
+{
+КТП
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-73)
+{
+Разуплотнение фланцевых соединений люков коллекторов первого контура
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-73)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-73)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-73)
+{
+
+};
+
+
+
+\draw (0,-85)--(287,-85);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-81)
+{
+Г2
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-81)
+{
+В00536.002.01
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-81)
+{
+ВО
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-81)
+{
+Средства оснащения на разуплотнение фланцевых соединений люков коллекторов первого контура
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-81)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-81)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-81)
+{
+
+};
+
+
+
+\draw (0,-93)--(287,-93);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-89)
+{
+Г3
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-89)
+{
+КЭ0536.002.01
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-89)
+{
+КЭ
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-89)
+{
+Разуплотнение фланцевых соединений люков коллекторов первого контура
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-89)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-89)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-89)
+{
+
+};
+
+
+
+\draw (0,-101)--(287,-101);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-97)
+{
+Г4
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-97)
+{
+КС0536.002.01
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-97)
+{
+КС
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-97)
+{
+Разуплотнение фланцевых соединений люков коллекторов первого контура
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-97)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-97)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-97)
+{
+
+};
+
+
+% ==========================================================
+% Нижний адресный блок
+% ==========================================================
+
+% ==========================================================
+% Нижний адресный блок
+% ==========================================================
+
+\draw (5,-194) rectangle (22,-201);
+
+\node[
+align=center,
+text width=17mm,
+font=\small
+]
+at (13.5,-197.5)
+{
+ВТД
+};
+
+\draw (22,-194) rectangle (275,-201);
+
+\node[
+align=left,
+text width=251mm,
+font=\small
+]
+at (148.5,-197.5)
+{
+Документы на 
+};
+
+\draw (275,-194) rectangle (292,-201);
+
+\node[
+font=\small
+]
+at (283.5,-197.5)
+{
+3
+};
+\end{tikzpicture}

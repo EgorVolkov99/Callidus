@@ -1,0 +1,46 @@
+\COMMENT{ templates/sections/revision.tex.j2 }
+\label{sec:revision_sheet}
+\begin{center}
+    \fontsize{14}{16}\bfseries\selectfont
+    Лист регистрации изменений / Revision record sheet
+\end{center}
+
+\noindent\fontsize{10}{12.5}\selectfont
+\begin{tabularx}{\textwidth}{|
+    >{\centering\arraybackslash\hsize=0.6\hsize}X| % Изм. (самый узкий)
+    >{\centering\arraybackslash\hsize=1.0\hsize}X| % Измененных
+    >{\centering\arraybackslash\hsize=1.0\hsize}X| % Заменен.
+    >{\centering\arraybackslash\hsize=1.0\hsize}X| % Новых
+    >{\centering\arraybackslash\hsize=1.0\hsize}X| % аннулиро-ванных
+    >{\centering\arraybackslash\hsize=1.0\hsize}X| % Всего листов
+    >{\centering\arraybackslash\hsize=1.2\hsize}X| % № докум. (пошире)
+    >{\centering\arraybackslash\hsize=1.2\hsize}X| % Подпись
+    >{\centering\arraybackslash\hsize=1.0\hsize}X| % Дата
+}
+    \hline
+    \rowcolor{graybg}
+    % --- ПЕРВАЯ СТРОКА ШАПКИ ---
+     &
+    \multicolumn{4}{c|}{\textbf{Номера листов / Sheet numbers}} &
+     &
+     &
+     &
+     \\ \hhline{~|----|~~~~}
+
+    \rowcolor{graybg}
+    % --- ВТОРАЯ СТРОКА ШАПКИ (Текст подтягивается вверх) ---
+    \multirow{-2}{*}{\parbox[c][1.3cm][c]{\hsize}{\centering \textbf{Изм. / Rev.}}} &
+    \parbox[c][1.3cm][c]{\hsize}{\centering \textbf{измен. / modified}} &
+    \parbox[c][1.3cm][c]{\hsize}{\centering \textbf{замен. / replaced}} &
+    \parbox[c][1.3cm][c]{\hsize}{\centering \textbf{новых / added}} &
+    \parbox[c][1.3cm][c]{\hsize}{\centering \textbf{аннулир. / deleted}} &
+    \multirow{-2}{*}{\parbox[c][1.3cm][c]{\hsize}{\centering \textbf{Всего листов / Sheets Total }}} &
+    \multirow{-2}{*}{\parbox[c][1.3cm][c]{\hsize}{\centering \textbf{№ докум. / Doc. No.}}} &
+    \multirow{-2}{*}{\parbox[c][1.3cm][c]{\hsize}{\centering \textbf{Подпись / Signature}}} &
+    \multirow{-2}{*}{\parbox[c][1.3cm][c]{\hsize}{\centering \textbf{Дата / Date}}} \\ \hline %
+
+    % --- ПУСТЫЕ СТРОКИ (высота 8 мм) ---
+    \BLOCK{ for i in range(22) }
+    \parbox[c][1cm][c]{\hsize}{} & & & & & & & & \\ \hline
+    \BLOCK{ endfor }
+\end{tabularx}

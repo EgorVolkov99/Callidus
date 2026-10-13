@@ -1,0 +1,1674 @@
+\begin{tikzpicture}[remember picture,overlay,x=1mm,y=1mm]
+
+
+% ==========================================================
+% Общая шапка
+% ==========================================================
+
+
+% ==========================================================
+% Верхний адресный блок (последующие страницы)
+% ==========================================================
+
+\node[
+anchor=north east,
+font=\fontsize{9}{9}\selectfont
+]
+at (292,-12)
+{
+Форма ВТД-2
+};
+
+% ==========================================================
+% Основная рамка
+% ==========================================================
+
+\draw[line width=0.4pt]
+(5,-17) rectangle (292,-201);
+
+% ==========================================================
+% Верхняя строка
+% ==========================================================
+
+\draw (5,-17) rectangle (152,-28);
+
+\node[
+align=center,
+text width=147mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (78.5,-22.5)
+{
+КТД0564.000-59085090
+};
+
+\draw (152,-17) rectangle (260,-28);
+
+\node[
+align=center,
+text width=108mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (206,-22.5)
+{
+ВТД0564.000.00
+};
+
+\draw (260,-17) rectangle (292,-28);
+
+\node[
+align=center,
+text width=32mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (276,-22.5)
+{
+Лист 2
+};
+
+% ==========================================================
+% Наименование оборудования
+% ==========================================================
+
+\draw (0,-31) rectangle (287,-38);
+
+\node[
+align=center,
+font=\fontsize{9}{9}\selectfont
+]
+at (143.5,-34.5)
+{
+Эжектор ЭУ-430
+};
+
+% ==========================================================
+% Наименование комплекта
+% ==========================================================
+
+\draw (0,-38) rectangle (287,-45);
+
+\node[
+align=center,
+font=\fontsize{9}{9}\selectfont
+]
+at (143.5,-41.5)
+{
+Ведомость технологических документов
+};
+
+% ==========================================================
+% Шапка ВТД
+% ==========================================================
+
+
+\draw (5,-28) rectangle (19,-32.33);
+
+\node[
+align=center,
+text width=14mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (12,-30.165)
+{В};
+
+\draw (19,-28) rectangle (35,-32.33);
+
+\node[
+align=center,
+text width=16mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (27,-30.165)
+{НПП};
+
+\draw (35,-28) rectangle (292,-32.33);
+
+\node[
+align=left,
+text width=255mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (163.5,-30.165)
+{Обозначение, наименование оборудования/СЕ/Д по КД};
+
+\draw (5,-32.33) rectangle (19,-36.66);
+
+\node[
+align=center,
+text width=14mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (12,-34.495)
+{Ф};
+
+\draw (19,-32.33) rectangle (236,-36.66);
+
+\node[
+align=left,
+text width=215mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (127.5,-34.495)
+{Обозначение, наименование комплекта документации (документов)};
+
+\draw (236,-34.33) rectangle (256,-41);
+
+\node[
+align=center,
+text width=20mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (246,-36.665)
+{Листов};
+
+\draw (256,-32.33) rectangle (292,-41);
+
+\node[
+align=center,
+text width=36mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (274,-36.665)
+{Примечания};
+
+\draw (5,-36.66) rectangle (19,-41);
+
+\node[
+align=center,
+text width=14mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (12,-38.83)
+{Г};
+
+\draw (19,-36.66) rectangle (61,-41);
+
+\node[
+align=center,
+text width=42mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (40,-38.83)
+{Обозначение ТД};
+
+\draw (61,-36.66) rectangle (92.5,-41);
+
+\node[
+align=center,
+text width=31.5mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (76.75,-38.83)
+{Усл. обозн. ТД};
+
+\draw (92.5,-36.66) rectangle (236,-41);
+
+\node[
+align=left,
+text width=161.5mm,
+font=\fontsize{9}{9}\selectfont
+]
+at (174.25,-38.83)
+{Наименование ТД};
+
+
+% ==========================================================
+% Таблица ВТД
+% ==========================================================
+
+% ---------- Колонки ----------
+
+\draw (10,-45)--(10,-194);      % Ф
+\draw (24,-45)--(24,-194);      % Обозначение
+\draw (48,-45)--(48,-194);      % Код
+\draw (228,-45)--(228,-194);    % Наименование
+\draw (246,-45)--(246,-194);    % Кол. листов
+\draw (263,-45)--(263,-194);    % Номер листа
+
+% ==========================================================
+% Строки
+% ==========================================================
+
+
+
+\draw (0,-61)--(287,-61);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-57)
+{
+В01
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-57)
+{
+491.05
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-57)
+{
+
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-57)
+{
+Парогенератор ПГВ-1000МКП с опорами
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-57)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-57)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-57)
+{
+
+};
+
+
+
+\draw (0,-69)--(287,-69);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-65)
+{
+Ф1
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-65)
+{
+КТД0536.000-59085090
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-65)
+{
+
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-65)
+{
+Парогенератор ПГВ-1000МКП с опорами. Комплект технологических документов на техническое обслуживание и ремонт
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-65)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-65)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-65)
+{
+
+};
+
+
+
+\draw (0,-77)--(287,-77);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-73)
+{
+Г1
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-73)
+{
+ВТДС0536.000.00
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-73)
+{
+ВТДС
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-73)
+{
+Документы на техническое обслуживание и ремонт парогенератора ПГВ-1000МКП с опорами
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-73)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-73)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-73)
+{
+
+};
+
+
+
+\draw (0,-85)--(287,-85);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-81)
+{
+Г2
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-81)
+{
+КСТП0536.000.00
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-81)
+{
+КСТП
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-81)
+{
+Маршрут технического обслуживания и ремонта парогенератора ПГВ-1000МКП с опорами
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-81)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-81)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-81)
+{
+
+};
+
+
+
+\draw (0,-93)--(287,-93);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-89)
+{
+Г3
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-89)
+{
+МК0536.000.01
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-89)
+{
+МК
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-89)
+{
+Маршрут технологического процесса «Поиск теплообменных труб, имеющих сквозные дефекты
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-89)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-89)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-89)
+{
+
+};
+
+
+
+\draw (0,-101)--(287,-101);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-97)
+{
+Г4
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-97)
+{
+МК0536.000.02
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-97)
+{
+МК
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-97)
+{
+Маршрут технологического процесса «Техническое обслуживание и ремонт внутри коллекторов первого контура
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-97)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-97)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-97)
+{
+
+};
+
+
+
+\draw (0,-109)--(287,-109);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-105)
+{
+Г5
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-105)
+{
+МК0536.000.03
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-105)
+{
+МК
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-105)
+{
+Маршрут технологического процесса «Техническое обслуживание и ремонт внутри корпуса парогенератора
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-105)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-105)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-105)
+{
+
+};
+
+
+
+\draw (0,-117)--(287,-117);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-113)
+{
+Г6
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-113)
+{
+МК0536.000.04
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-113)
+{
+МК
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-113)
+{
+Маршрут технологического процесса «Техническое обслуживание и ремонт снаружи корпуса парогенератора
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-113)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-113)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-113)
+{
+
+};
+
+
+
+\draw (0,-125)--(287,-125);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-121)
+{
+Г7
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-121)
+{
+МК0536.000.05
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-121)
+{
+МК
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-121)
+{
+Маршрут технологического процесса «Дефектация и ремонт элементов фланцевых соединений люков второго контура
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-121)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-121)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-121)
+{
+
+};
+
+
+
+\draw (0,-133)--(287,-133);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-129)
+{
+Г8
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-129)
+{
+МК0536.000.06
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-129)
+{
+МК
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-129)
+{
+Маршрут технологического процесса «Дефектация и ремонт элементов фланцевых соединений люков первого контура
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-129)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-129)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-129)
+{
+
+};
+
+
+
+\draw (0,-141)--(287,-141);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-137)
+{
+Г9
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-137)
+{
+МК0536.000.07
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-137)
+{
+МК
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-137)
+{
+Маршрут технологического процесса «Дефектация и ремонт элементов фланцевых соединений люков-лазов
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-137)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-137)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-137)
+{
+
+};
+
+
+
+\draw (0,-149)--(287,-149);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-145)
+{
+Г10
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-145)
+{
+МК0536.000.08
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-145)
+{
+МК
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-145)
+{
+Маршрут технологического процесса «Дефектация и ремонт элементов фланцевых соединений патрубков, штуцеров
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-145)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-145)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-145)
+{
+
+};
+
+
+
+\draw (0,-157)--(287,-157);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-153)
+{
+Г11
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-153)
+{
+КТИ0536.000.00
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-153)
+{
+КТИ
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-153)
+{
+Общие и специальные требования к техническому обслуживанию и ремонту парогенератора ПГВ-ЮООМКП с опорами
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-153)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-153)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-153)
+{
+
+};
+
+
+
+\draw (0,-165)--(287,-165);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-161)
+{
+Г12
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-161)
+{
+ВОС0536.000.00
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-161)
+{
+ВОС
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-161)
+{
+Средства оснащения на техническое обслуживание и ремонт парогенератора ПГВ-ЮООМКП с опорами
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-161)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-161)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-161)
+{
+
+};
+
+
+
+\draw (0,-173)--(287,-173);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-169)
+{
+Г13
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-169)
+{
+ВМС0536.000.00
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-169)
+{
+ВМС
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-169)
+{
+Материалы для технического обслуживания и ремонта парогенератора ПГВ-ЮООМКП сопорами
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-169)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-169)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-169)
+{
+
+};
+
+
+
+\draw (0,-181)--(287,-181);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-177)
+{
+Г14
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-177)
+{
+КЭ0536.000.01
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-177)
+{
+КЭ
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-177)
+{
+Техническое обслуживание и ремонт парогенератора ПГВ-ЮООМКП с опорами
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-177)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-177)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-177)
+{
+
+};
+
+
+
+\draw (0,-189)--(287,-189);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-185)
+{
+Ф2
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-185)
+{
+КТД0536.001-59085090
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-185)
+{
+
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-185)
+{
+Комплект технологических документов на разуплотнение фланцевых соединений люков второго контура
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-185)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-185)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-185)
+{
+
+};
+
+
+
+\draw (0,-197)--(287,-197);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-193)
+{
+Г1
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-193)
+{
+КТП0536.001.01
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-193)
+{
+КТП
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-193)
+{
+Разуплотнение фланцевых соединений люков второго контура
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-193)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-193)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-193)
+{
+
+};
+
+
+
+\draw (0,-205)--(287,-205);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-201)
+{
+Г2
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-201)
+{
+КЭ0536.001.01
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-201)
+{
+КЭ
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-201)
+{
+Разуплотнение фланцевых соединений люков второго контура
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-201)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-201)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-201)
+{
+
+};
+
+
+
+\draw (0,-213)--(287,-213);
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (1,-209)
+{
+Г3
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont,
+text width=22mm
+]
+at (11,-209)
+{
+КС0536.001.01
+};
+
+\node[
+anchor=west,
+font=\fontsize{8}{8}\selectfont
+]
+at (25,-209)
+{
+КС
+};
+
+\node[
+anchor=west,
+text width=176mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (49,-209)
+{
+Разуплотнение фланцевых соединений люков второго контура
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (237,-209)
+{
+0
+};
+
+\node[
+anchor=center,
+font=\fontsize{8}{8}\selectfont
+]
+at (255,-209)
+{
+1
+};
+
+\node[
+anchor=west,
+text width=22mm,
+font=\fontsize{8}{8}\selectfont
+]
+at (264,-209)
+{
+
+};
+
+
+% ==========================================================
+% Нижний адресный блок
+% ==========================================================
+
+% ==========================================================
+% Нижний адресный блок
+% ==========================================================
+
+\draw (5,-194) rectangle (22,-201);
+
+\node[
+align=center,
+text width=17mm,
+font=\small
+]
+at (13.5,-197.5)
+{
+ВТД
+};
+
+\draw (22,-194) rectangle (275,-201);
+
+\node[
+align=left,
+text width=251mm,
+font=\small
+]
+at (148.5,-197.5)
+{
+Документы на 
+};
+
+\draw (275,-194) rectangle (292,-201);
+
+\node[
+font=\small
+]
+at (283.5,-197.5)
+{
+2
+};
+\end{tikzpicture}

@@ -1,0 +1,15 @@
+\COMMENT{ templates/pages/first_page.tex.j2 }
+\begin{center}
+    \fontsize{14}{16}\bfseries\selectfont
+    Содержание / Table of contents
+\end{center}
+\vspace{4mm}
+
+{\fontsize{14}{21}\selectfont
+\noindent
+\begin{tabularx}{\textwidth}{@{}X r@{}}
+\BLOCK{ for item in toc_items }
+\VAR{item.title} \dotfill & \pageref{\VAR{item.label}} \\
+\BLOCK{ endfor }
+\end{tabularx}
+}

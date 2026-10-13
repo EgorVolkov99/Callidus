@@ -1,0 +1,111 @@
+\COMMENT{ templates/common/large_stamp.tex.j2 }
+
+\providecommand{\DrawLargeStamp}{%
+    \begin{tikzpicture}[x=1mm, y=1mm, remember picture, overlay, shift={([xshift=20mm, yshift=5mm]current page.south west)}]
+        \draw[line width=1pt] (0,0) rectangle (185,40);
+        \draw[line width=1pt] (65,0) -- (65,40);
+        \draw[line width=1pt] (135,0) -- (135,25);
+
+        \draw[line width=1pt] (7,25) -- (7,40);
+        \draw[line width=1pt] (17,0) -- (17,40);
+        \draw[line width=1pt] (40,25) -- (40,40);
+        \draw[line width=1pt] (55,0) -- (55,40);
+
+        \foreach \y in {4.15,12.49,16.66,20.83} {
+            \draw[line width=1pt] (0,\y) -- (17,\y);
+        }
+
+        \foreach \y in {8.32,16.66} {
+            \draw[line width=1pt] (0,\y) -- (65,\y);
+        }
+
+        \foreach \y in {25,30,35} {
+            \draw[line width=1pt] (0,\y) -- (65,\y);
+        }
+
+        \node[font=\fontsize{10}{15}\selectfont] at (3.5, 27.5) {Изм.};
+        \node[font=\fontsize{10}{15}\selectfont] at (12, 27.5) {Лист};
+        \node[font=\fontsize{10}{15}\selectfont] at (28.5, 27.5) {№ докум.};
+        \node[font=\fontsize{10}{15}\selectfont] at (47.5, 27.5) {Подп.};
+        \node[font=\fontsize{10}{15}\selectfont] at (60, 27.5) {Дата};
+
+        \node[font=\fontsize{10}{15}\selectfont] at (3.5, 32.5) {Rev.};
+        \node[font=\fontsize{10}{15}\selectfont] at (12, 32.5) {Sheet};
+        \node[font=\fontsize{10}{15}\selectfont] at (28.5, 32.5) {Docum. No};
+        \node[font=\fontsize{10}{15}\selectfont] at (47.5, 32.5) {Signature};
+        \node[font=\fontsize{10}{15}\selectfont] at (60, 32.5) {Date};
+
+        % Разраб.
+        \node[font=\fontsize{10}{15}\selectfont, anchor=center] at (8.5, 22.92) {Разраб.};
+        \node[font=\fontsize{10}{15}\selectfont, anchor=center] at (8.5, 18.75) {Designed.};
+        \BLOCK{ if variables.designer_rus }%
+            \node[font=\fontsize{10}{15}\selectfont, anchor=west] at (18, 22.92) {\VAR{variables.designer_rus | default('')}};
+        \BLOCK{ endif }%
+        \BLOCK{ if variables.designer_eng }%
+            \node[font=\fontsize{10}{15}\selectfont, anchor=west] at (18, 18.75) {\VAR{variables.designer_eng | default('')}};
+        \BLOCK{ endif }%
+        \BLOCK{ if variables.design_date }%
+            \node[font=\fontsize{7}{10.5}\selectfont, anchor=center] at (60, 20.83) {\VAR{variables.design_date | default('')}};
+        \BLOCK{ endif }%
+
+        % Н.контр.
+        \node[font=\fontsize{10}{15}\selectfont, anchor=center] at (8.5, 14.58) {Н.контр.};
+        \node[font=\fontsize{10}{15}\selectfont, anchor=center] at (8.5, 10.41) {Inspector};
+        \BLOCK{ if variables.inspector_rus }%
+            \node[font=\fontsize{10}{15}\selectfont, anchor=west] at (18, 14.58) {\VAR{variables.inspector_rus | default('')}};
+        \BLOCK{ endif }%
+        \BLOCK{ if variables.inspector_eng }%
+            \node[font=\fontsize{10}{15}\selectfont, anchor=west] at (18, 10.41) {\VAR{variables.inspector_eng | default('')}};
+        \BLOCK{ endif }%
+        \BLOCK{ if variables.inspection_date }%
+            \node[font=\fontsize{7}{10.5}\selectfont, anchor=center] at (60, 12.49) {\VAR{variables.inspection_date | default('')}};
+        \BLOCK{ endif }%
+
+        % Утв.
+        \node[font=\fontsize{10}{15}\selectfont, anchor=center] at (8.5, 6.24) {Утв.};
+        \node[font=\fontsize{10}{15}\selectfont, anchor=center] at (8.5, 2.08) {Approved};
+        \BLOCK{ if variables.inspector_rus }%
+            \node[font=\fontsize{10}{15}\selectfont, anchor=west] at (18, 6.24) {\VAR{variables.approver_rus | default('')}};
+        \BLOCK{ endif }%
+        \BLOCK{ if variables.inspector_rus }%
+            \node[font=\fontsize{10}{15}\selectfont, anchor=west] at (18, 2.08) {\VAR{variables.approver_eng | default('')}};
+        \BLOCK{ endif }%
+        \BLOCK{ if variables.inspector_rus }%
+            \node[font=\fontsize{7}{10.5}\selectfont, anchor=center] at (60, 4.16) {\VAR{variables.approve_date | default('')}};
+        \BLOCK{ endif }%
+
+        \draw[line width=1pt] (65,25) -- (185,25);
+        \node[font=\fontsize{14}{21}\selectfont] at (125, 32.5) {\VAR{variables.passport_code}};
+
+        \node[font=\fontsize{10}{15}\selectfont, align=center, text width=68mm] at (100, 12.5) {
+            {\VAR{unit.product_name_rus}} \\
+            {\VAR{unit.product_name_eng}} \\
+            {\VAR{unit.product_brand}} {\VAR{unit.product_model}}
+        };
+
+        \draw[line width=1pt] (135,20) -- (185,20);
+        \draw[line width=1pt] (135,15) -- (185,15);
+        \draw[line width=1pt] (135,10) -- (185,10);
+
+        \draw[line width=1pt] (140,10) -- (140,15);
+        \draw[line width=1pt] (145,10) -- (145,15);
+        \draw[line width=1pt] (150,10) -- (150,25);
+        \draw[line width=1pt] (165,10) -- (165,25);
+
+        \node[font=\fontsize{10}{15}\selectfont] at (142.5, 22.5) {Лит.};
+        \node[font=\fontsize{10}{15}\selectfont] at (157.5, 22.5) {Лист};
+        \node[font=\fontsize{10}{15}\selectfont] at (175, 22.5) {Листов};
+
+        \node[font=\fontsize{10}{15}\selectfont] at (142.5, 17.5) {Letter};
+        \node[font=\fontsize{10}{15}\selectfont] at (157.5, 17.5) {Sheet};
+        \node[font=\fontsize{10}{15}\selectfont] at (175, 17.5) {Sheets};
+
+        \node[font=\fontsize{10}{15}\selectfont] at (157.5, 12.5) {1};
+        \node[font=\fontsize{10}{15}\selectfont] at (175, 12.5) {\pageref{LastPage}};
+
+        \node[font=\fontsize{10}{15}\selectfont, align=center, text width=48mm] at (160, 5) {
+            \VAR{variables.company_short_name_rus} \\
+            \VAR{variables.company_short_name_eng}
+        };
+    \end{tikzpicture}%
+}

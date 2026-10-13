@@ -1,0 +1,193 @@
+\COMMENT{ templates/sections/approval_tests.tex.j2 }
+\label{sec:approval_tests}
+\textbf{\fontsize{14}{21}\selectfont \VAR{approval_tests.sec_num}. Результаты приемо-сдаточных испытаний / Results of approval tests}
+
+\vspace{4mm}
+\fontsize{14}{21}\selectfont
+Результаты приёмо-сдаточных испытаний приведены в Таблице \VAR{approval_tests.sec_num}.
+
+% ==============================================================================
+% РУССКОЯЗЫЧНАЯ ТАБЛИЦА ПСИ
+% ==============================================================================
+
+\BLOCK{ for page in approval_tests.rus_pages }%
+
+    % 1. Заголовок таблицы для первой страницы или страниц-продолжений
+    \BLOCK{ if not page.is_first }%
+        \newpage
+        \noindent\fontsize{12}{18}\textbf{Продолжение таблицы \VAR{approval_tests.sec_num} / Continuation of Table \VAR{approval_tests.sec_num}}
+    \BLOCK{ else }%
+        \noindent\fontsize{12}{18}\textbf{Таблица \VAR{approval_tests.sec_num} – Результаты приёмо-сдаточных испытаний}
+    \BLOCK{ endif }%
+
+    \vspace{2mm}
+    \noindent\fontsize{11}{13.75}\selectfont
+    % Вычисляем общее количество колонок: 1 (боковой штамп) + количество колонок данных
+    \BLOCK{ set col_count = page.rows[0] | length + 1 }%
+    \renewcommand{\arraystretch}{1.5}{
+    \begin{tabularx}{\textwidth}{|m{3cm}| *{\VAR{col_count - 1}}{>{\centering\arraybackslash}X|} }
+        \hline
+
+        % 2. Шапка таблицы (генерируется ТОЛЬКО на первой странице раздела)
+        \BLOCK{ if page.is_first }%
+            \rowcolor{graybg}
+            \parbox[c][1cm][c]{\hsize}{\centering \textbf{Наименование и обозначение}}
+            \BLOCK{ for key in page.rows[0] }%
+                & \parbox[c][1cm][c]{\hsize}{\centering \textbf{\VAR{key | latex}}}%
+            \BLOCK{ endfor } \\ \hline\hline
+        \BLOCK{endif}%
+
+        % 3. Нумерация колонок (1, 2, 3...)
+        \BLOCK{ for i in range(1, col_count + 1) }%
+            \parbox[c][0.75cm][c]{\hsize}{\centering \VAR{i}}
+            \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+        \BLOCK{ endfor } \\ \hline
+
+        % 4. Вывод строк данных (максимум 4 строки на страницу)
+        \BLOCK{ for row in page.rows }%
+            % Превращаем значения словаря в список для обращения без цикла key/value
+            \BLOCK{ set values = row.values() | list }%
+
+            % Колонка 1: Вертикальный штамп с протоколом ПСИ (на первой строке страницы)
+            \BLOCK{ if loop.first }%
+                \BLOCK{ if page.is_first }%
+                    \multirow{\VAR{page.rows | length}}{3cm}{%
+                        \begin{tikzpicture}[remember picture, overlay]
+                            \node[
+                                rotate=90,          % Поворот на 90 градусов
+                                align=center,       % Выравнивание строк внутри ноды по центру
+                                text width=\VAR{page.rows | length}*3cm,    % Максимальная длина текста (после поворота станет высотой)
+                                inner sep=0pt       % Убираем внутренние отступы рамки ноды
+                            ] at (1.5cm, \VAR{page.rows | length -1}*-1cm) {%
+                                \VAR{unit.product_name_rus | default('') | latex} \textbf{\VAR{unit.product_brand | default('') | latex} \VAR{unit.product_model | default('') | latex}} \\
+                                Протокол приёмо-сдаточных испытаний \\
+                                \textnumero{} \rule{2cm}{0.4pt} от \rule{2cm}{0.4pt}
+                            };
+                        \end{tikzpicture}%
+                    }%
+                \BLOCK{ else }%
+                    \multirow{\VAR{page.rows | length}}{*}{}%
+                \BLOCK{ endif }%
+            \BLOCK{ endif }%
+
+            % Колонки 2..N: Вывод значений ячеек
+            \BLOCK{ for val in values }%
+                & % Знак & переводит вывод в следующую колонку
+                \BLOCK{ if loop.last }%
+                    % ПОСЛЕДНЯЯ КОЛОНКА: Без вложенного tabular!
+                    % Однородный \parbox с физическим разделением через \hrule без вертикальных разрывов
+                    \parbox[c][3cm][c]{\hsize}{%
+                        \offinterlineskip
+                        \parbox[c][1.5cm]{\hsize}{\centering \VAR{val | latex}}%
+                        \hrule height 0.4pt%
+                        \parbox[c][1.5cm]{\hsize}{}%
+                    }%
+                \BLOCK{ else }%
+                    % СРЕДНИЕ КОЛОНКИ: Высота 3 см с выравниванием по центру
+                    \parbox[c][3cm]{\hsize}{\centering \VAR{val | latex}}%
+                \BLOCK{ endif }%
+            \BLOCK{ endfor } \\
+
+            % Горизонтальные линии: \cline оставляет первую колонку с \multirow неперечеркнутой
+            \BLOCK{ if loop.last } \hline \BLOCK{ else } \cline{2-\VAR{col_count}} \BLOCK{ endif }
+        \BLOCK{ endfor }%
+
+    \end{tabularx}
+    }
+
+\BLOCK{ endfor }
+
+\newpage
+\fontsize{14}{21}\selectfont
+The results of approval tests are given in the Table \VAR{approval_tests.sec_num}.
+
+% ==============================================================================
+% АНГЛОЯЗЫЧНАЯ ТАБЛИЦА ПСИ
+% ==============================================================================
+
+\BLOCK{ for page in approval_tests.eng_pages }%
+
+    % 1. Заголовок таблицы для первой страницы или страниц-продолжений
+    \BLOCK{ if not page.is_first }%
+        \newpage
+        \noindent\fontsize{12}{18}\textbf{Продолжение таблицы \VAR{approval_tests.sec_num} / Continuation of Table \VAR{approval_tests.sec_num}}
+    \BLOCK{ else }%
+        \noindent\fontsize{12}{18}\textbf{Table \VAR{approval_tests.sec_num} – Results of approval tests}
+    \BLOCK{ endif }%
+
+    \vspace{2mm}
+    \noindent\fontsize{11}{13.75}\selectfont
+    % Вычисляем общее количество колонок: 1 (боковой штамп) + количество колонок данных
+    \BLOCK{ set col_count = page.rows[0] | length + 1 }%
+    \renewcommand{\arraystretch}{1.5}{
+    \begin{tabularx}{\textwidth}{|m{3cm}| *{\VAR{col_count - 1}}{>{\centering\arraybackslash}X|} }
+        \hline
+
+        % 2. Шапка таблицы (генерируется ТОЛЬКО на первой странице раздела)
+        \BLOCK{ if page.is_first }%
+            \rowcolor{graybg}
+            \parbox[c][1cm][c]{\hsize}{\centering \textbf{Name and designation}}
+            \BLOCK{ for key in page.rows[0] }%
+                & \parbox[c][1cm][c]{\hsize}{\centering \textbf{\VAR{key | latex}}}%
+            \BLOCK{ endfor } \\ \hline\hline
+        \BLOCK{endif}%
+
+        % 3. Нумерация колонок (1, 2, 3...)
+        \BLOCK{ for i in range(1, col_count + 1) }%
+            \parbox[c][0.75cm][c]{\hsize}{\centering \VAR{i}}
+            \BLOCK{ if not loop.last }&\BLOCK{ endif }%
+        \BLOCK{ endfor } \\ \hline
+
+        % 4. Вывод строк данных (максимум 4 строки на страницу)
+        \BLOCK{ for row in page.rows }%
+            % Превращаем значения словаря в список для обращения без цикла key/value
+            \BLOCK{ set values = row.values() | list }%
+
+            % Колонка 1: Вертикальный штамп с протоколом ПСИ (на первой строке страницы)
+            \BLOCK{ if loop.first }%
+                \BLOCK{ if page.is_first }%
+                    \multirow{\VAR{page.rows | length}}{3cm}{%
+                        \begin{tikzpicture}[remember picture, overlay]
+                            \node[
+                                rotate=90,          % Поворот на 90 градусов
+                                align=center,       % Выравнивание строк внутри ноды по центру
+                                text width=\VAR{page.rows | length}*3cm,    % Максимальная длина текста (после поворота станет высотой)
+                                inner sep=0pt       % Убираем внутренние отступы рамки ноды
+                            ] at (1.5cm, \VAR{page.rows | length -1}*-1cm) {%
+                                \VAR{unit.product_name_eng | default('') | latex} \textbf{\VAR{unit.product_brand | default('') | latex} \VAR{unit.product_model | default('') | latex}} \\
+                                Approval test protocol \\
+                                \textnumero{} \rule{2cm}{0.4pt} от \rule{2cm}{0.4pt}
+                            };
+                        \end{tikzpicture}%
+                    }%
+                \BLOCK{ else }%
+                    \multirow{\VAR{page.rows | length}}{*}{}%
+                \BLOCK{ endif }%
+            \BLOCK{ endif }%
+
+            % Колонки 2..N: Вывод значений ячеек
+            \BLOCK{ for val in values }%
+                & % Знак & переводит вывод в следующую колонку
+                \BLOCK{ if loop.last }%
+                    % ПОСЛЕДНЯЯ КОЛОНКА: Без вложенного tabular!
+                    % Однородный \parbox с физическим разделением через \hrule без вертикальных разрывов
+                    \parbox[c][3cm][c]{\hsize}{%
+                        \offinterlineskip
+                        \parbox[c][1.5cm]{\hsize}{\centering \VAR{val | latex}}%
+                        \hrule height 0.4pt%
+                        \parbox[c][1.5cm]{\hsize}{}%
+                    }%
+                \BLOCK{ else }%
+                    % СРЕДНИЕ КОЛОНКИ: Высота 3 см с выравниванием по центру
+                    \parbox[c][3cm]{\hsize}{\centering \VAR{val | latex}}%
+                \BLOCK{ endif }%
+            \BLOCK{ endfor } \\
+
+            % Горизонтальные линии: \cline оставляет первую колонку с \multirow неперечеркнутой
+            \BLOCK{ if loop.last } \hline \BLOCK{ else } \cline{2-\VAR{col_count}} \BLOCK{ endif }
+        \BLOCK{ endfor }%
+
+    \end{tabularx}
+    }
+
+\BLOCK{ endfor }

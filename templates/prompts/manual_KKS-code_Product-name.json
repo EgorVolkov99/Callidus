@@ -1,0 +1,672 @@
+{
+  "metadata": {
+    "type": "manual",
+    "kks": [
+      "00KPB21CP003",
+      "00KPB21CP004",
+      "00KPB21CP006",
+      "00KPB21CP007",
+      "00KPB21CP008",
+      "00KPB21CP009",
+      "00KPB21CP024",
+      "00KPB21CP025"
+    ],
+    "equipment": "Pressure transmitter",
+    "document_kks": ""
+  },
+  "company": {
+    "okpd_code": "26.51.52.110",
+    "manual_code": "00KPB21CP.01 РЭ",
+    "company_full_name_rus": "Акционерное общество “Научно-исследовательский и конструкторский институт монтажной технологии - Атомстрой”",
+    "company_full_name_eng": "Joint Stock Company “Research and Design Institute of Installation Technology – Atomstroy”",
+    "company_short_name_rus": "АО “НИКИМТ-Атомстрой”",
+    "company_short_name_eng": "JSC “NIKIMT-Atomstroy”",
+    "designer_rus": null,
+    "designer_eng": null,
+    "inspector_rus": null,
+    "inspector_eng": null,
+    "approver_rus": null,
+    "approver_eng": null,
+    "approve_date": null,
+    "inspection_date": null,
+    "design_date": null,
+    "registration_date": null,
+    "inv_num": null
+  },
+  "unit": {
+    "kks_code": [
+      "00KPB21CP003",
+      "00KPB21CP004",
+      "00KPB21CP006",
+      "00KPB21CP007",
+      "00KPB21CP008",
+      "00KPB21CP009",
+      "00KPB21CP024",
+      "00KPB21CP025"
+    ],
+    "product_name_rus": "Преобразователь давления",
+    "product_name_eng": "Pressure transmitter",
+    "product_name_2_rus": "преобразователя давления",
+    "product_name_2_eng": "pressure transmitter",
+    "product_brand": "BD Sensors",
+    "product_model": "HMP 331D"
+  },
+  "introduction": {
+    "personnel": {
+      "rus": null,
+      "eng": null,
+      "electrical": {
+        "safety_group": "III",
+        "max_voltage": "250"
+      },
+      "welding": true
+    },
+    "hazard": {
+      "rus": null,
+      "eng": null,
+      "high_pressure": true,
+      "high_temperature": true,
+      "radiation": true,
+      "voltage": true
+    }
+  },
+  "description_and_operation": {
+    "unit": {
+      "purpose": {
+        "rus": {
+          "text": null,
+          "product_name": "ПРОДУКТ",
+          "designation": "ХХХХ0000",
+          "purpose": "НЕКИХ ЦЕЛЕЙ",
+          "application": "НЕКОТОРАЯ",
+          "operating_conditions": "УСЛОВИЯ ИСПОЛЬЗОВАНИЯ",
+          "parameters": [
+            "ПАРАМЕТР 1",
+            "ПАРАМЕТР 2"
+          ],
+          "dimensions": [
+            "РАЗМЕРНОСТЬ 1",
+            "РАЗМЕРНОСТЬ 2"
+          ]
+        },
+        "eng": {
+          "text": null,
+          "product_name": "PRODUCT",
+          "designation": "XXXX0000",
+          "purpose": "SOME PURPOSES",
+          "application": "SOME",
+          "operating_conditions": "USAGE CONDITIONS",
+          "parameters": [
+            "PARAMETER 1",
+            "PARAMETER 2"
+          ],
+          "dimensions": [
+            "DIMENSION 1",
+            "DIMENSION 2"
+          ]
+        }
+      },
+      "specifications": {
+        "rus": {
+          "group_1_name": {
+            "Param_1": "111",
+            "Param_2": "112"
+          },
+          "group_2_name": {
+            "Param_1": "211",
+            "Param_2": "212"
+          }
+        },
+        "eng": {
+          "group_1_name": {
+            "Param_1": "111",
+            "Param_2": "112"
+          },
+          "group_2_name": {
+            "Param_1": "211",
+            "Param_2": "212"
+          }
+        }
+      },
+      "composition": {
+        "rus": {
+          "text": null,
+          "main_parts": [
+            {
+              "name": "ДЕТАЛЬ 1",
+              "designation": "ХХХХ0000",
+              "location": "ЛОКАЦИЯ"
+            },
+            {
+              "name": "ДЕТАЛЬ 2",
+              "designation": "ХХХХ0000",
+              "location": "ЛОКАЦИЯ"
+            }
+          ],
+          "spare_parts_kits": "ТЕКСТ УСТАНОВЛЕННОГО КОМПЛЕКТА ЗИП",
+          "modifications_differences": "ТЕКСТ ОТЛИЧИЯ МОДИФИКАЦИЙ",
+          "division_scheme_image": "ИЗОБРАЖЕНИЕ СХЕМЫ РАЗДЕЛЕНИЯ"
+        },
+        "eng": {
+          "text": null,
+          "main_parts": [
+            {
+              "name": "PART 1",
+              "designation": "XXXX0000",
+              "location": "LOCATION"
+            },
+            {
+              "name": "PART 2",
+              "designation": "XXXX0000",
+              "location": "LOCATION"
+            }
+          ],
+          "spare_parts_kits": "SPARE PARTS KIT TEXT",
+          "modifications_differences": "MODIFICATIONS TEXT",
+          "division_scheme_image": "DIVISION SCHEME IMAGE"
+        }
+      },
+      "operation": {
+        "rus": "ОПИСАНИЕ РАБОТЫ ИЗДЕЛИЯ",
+        "eng": "UNIT OPERATION DESCRIPTION"
+      },
+      "tools": {
+        "rus": {
+          "text": null,
+          "list": [
+            {
+              "tool": "ИНСТРУМЕНТ",
+              "purpose": "ДЛЯ ТОГО-ТО ТОГО-ТО",
+              "location": "МЕСТО УСТАНОВКИ",
+              "specifications": "ХАРАКТЕРИСТИКИ"
+            }
+          ]
+        },
+        "eng": {
+          "text": null,
+          "list": [
+            {
+              "tool": "TOOL",
+              "purpose": "PURPOSE",
+              "location": "LOCATION",
+              "specifications": "SPECIFICATIONS"
+            }
+          ]
+        }
+      },
+      "marking_and_sealing": {
+        "rus": "ТЕКСТ МАРКИРОВКИ И ПЛАМБИРОВАНИЯ",
+        "eng": "MARKING AND SEALING TEXT"
+      },
+      "packaging": {
+        "rus": "ТЕКСТ УПАКОВКИ",
+        "eng": "PACKAGING TEXT"
+      }
+    },
+    "parts": [
+      {
+        "part_name_rus": "НАЗВАНИЕ ДЕТАЛИ 1",
+        "part_name_eng": "PART NAME 1",
+        "general_info": {
+          "rus": "ОБЩАЯ ИНФОРМАЦИЯ",
+          "eng": "GENERAL INFO"
+        },
+        "operation": {
+          "rus": "ПРИНЦИП РАБОТЫ",
+          "eng": "WORKING PRINCIPLE"
+        },
+        "marking_and_sealing": {
+          "rus": "МАРКИРОВКА И ПЛАМБИРОВАНИЕ",
+          "eng": "MARKING AND SEALING"
+        },
+        "packaging": {
+          "rus": "УПАКОВКА",
+          "eng": "PACKAGING"
+        }
+      },
+      {
+        "part_name_rus": "НАЗВАНИЕ ДЕТАЛИ 2",
+        "part_name_eng": "PART NAME 2",
+        "general_info": {
+          "rus": "ОБЩАЯ ИНФОРМАЦИЯ",
+          "eng": "GENERAL INFO"
+        },
+        "operation": {
+          "rus": "ПРИНЦИП РАБОТЫ",
+          "eng": "WORKING PRINCIPLE"
+        },
+        "marking_and_sealing": {
+          "rus": "МАРКИРОВКА И ПЛАМБИРОВАНИЕ",
+          "eng": "MARKING AND SEALING"
+        },
+        "packaging": {
+          "rus": "УПАКОВКА",
+          "eng": "PACKAGING"
+        }
+      }
+    ]
+  },
+  "usage": {
+    "limitations": {
+      "rus": {
+        "text": null,
+        "limitations_list": [
+          {
+            "parameter": "Максимальное рабочее давление",
+            "value": "4.0 МПа",
+            "consequence": "Разрушение измерительной мембраны, разгерметизация"
+          }
+        ]
+      },
+      "eng": {
+        "text": null,
+        "limitations_list": [
+          {
+            "parameter": "Maximum working pressure",
+            "value": "4.0 MPa",
+            "consequence": "Destruction of the measuring membrane, depressurization"
+          }
+        ]
+      }
+    },
+    "preparation": {
+      "rus": {
+        "text": null,
+        "safety_measures": "Подготовку изделия к работе производить при снятом напряжении питания.",
+        "fuel_and_lubricants": "ТЕКСТ",
+        "visual_inspection": "Проверить отсутствие механических повреждений корпуса и разъемов.",
+        "workplace_inspection": "Убедиться в отсутствии посторонних предметов и влаги в зоне монтажа.",
+        "readiness_check": "Проверить надежность крепления изделия к процессу.",
+        "controls_setup": "ТЕКСТ",
+        "orientation": "Изделие допускает монтаж в любом пространственном положении.",
+        "readiness_states": "ТЕКСТ",
+        "interconnections": "Подключить разъем питания согласно схеме электрической.",
+        "turn_on_and_testing": "Подать напряжение питания. Убедиться в наличии выходного сигнала 4 мА при нулевом давлении.",
+        "troubleshooting": [
+          {
+            "problem": "Отсутствует выходной сигнал",
+            "action": "Проверить полярность подключения и наличие напряжения питания"
+          }
+        ]
+      },
+      "eng": {
+        "text": null,
+        "safety_measures": "Prepare the product for operation with the power supply disconnected.",
+        "fuel_and_lubricants": "ТЕКСТ",
+        "visual_inspection": "Check for mechanical damage to the housing and connectors.",
+        "workplace_inspection": "Ensure there are no foreign objects and moisture in the installation area.",
+        "readiness_check": "Check the reliability of the product's connection to the process.",
+        "controls_setup": "ТЕКСТ",
+        "orientation": "The product can be mounted in any spatial position.",
+        "readiness_states": "ТЕКСТ",
+        "interconnections": "Connect the power connector according to the electrical diagram.",
+        "turn_on_and_testing": "Apply power. Ensure there is a 4 mA output signal at zero pressure.",
+        "troubleshooting": [
+          {
+            "problem": "No output signal",
+            "action": "Check connection polarity and power supply"
+          }
+        ]
+      }
+    },
+    "operation": {
+      "rus": {
+        "text": null,
+        "personnel_actions": "Во время работы изделие функционирует автоматически и не требует вмешательства оператора.",
+        "operability_control": "Контроль работоспособности осуществляется по показаниям системы АСУ ТП (выходной сигнал 4-20 мА).",
+        "troubleshooting": true,
+        "operating_modes": "Непрерывный режим работы измерения давления.",
+        "mode_switching": "ПОРЯДОК ПЕРЕВОДА РЕЖИМОВ",
+        "initial_state_return": "ПРИВЕДЕНИЕ В ИСХОДНОЕ ПОЛОЖЕНИЕ",
+        "turn_off_and_inspection": "Отключить питание. Плавно сбросить давление в магистрали. Осмотреть изделие на предмет утечек.",
+        "fuel_and_lubricants_maintenance": "ОБСЛУЖИВАНИЕ ГСМ",
+        "safety_measures": "Запрещается производить демонтаж изделия, находящегося под давлением рабочей среды."
+      },
+      "eng": {
+        "text": null,
+        "personnel_actions": "During operation, the product functions automatically and requires no operator intervention.",
+        "operability_control": "Operability is monitored via the DCS system readings (4-20 mA output signal).",
+        "troubleshooting": true,
+        "operating_modes": "Continuous pressure measurement mode.",
+        "mode_switching": "MODE SWITCHING ORDER",
+        "initial_state_return": "RETURN TO INITIAL STATE",
+        "turn_off_and_inspection": "Disconnect power. Smoothly depressurize the line. Inspect the product for leaks.",
+        "fuel_and_lubricants_maintenance": "FUEL AND LUBRICANTS MAINTENANCE",
+        "safety_measures": "It is forbidden to dismantle the product while it is under working medium pressure."
+      }
+    },
+    "extreme_conditions": {
+      "rus": {
+        "text": null,
+        "fire_actions": "При возникновении пожара обесточить изделие, тушить углекислотным огнетушителем.",
+        "system_failures": "При резком падении выходного сигнала до 0 мА немедленно перекрыть отсечной клапан.",
+        "emergency_conditions": "В случае затопления помещения обесточить цепи питания датчика.",
+        "evacuation": "Действовать согласно плану эвакуации предприятия."
+      },
+      "eng": {
+        "text": null,
+        "fire_actions": "In case of fire, de-energize the product, extinguish with a CO2 fire extinguisher.",
+        "system_failures": "If the output signal drops sharply to 0 mA, immediately close the shut-off valve.",
+        "emergency_conditions": "In case of room flooding, de-energize the sensor power circuits.",
+        "evacuation": "Act according to the facility's evacuation plan."
+      }
+    },
+    "modified_product_features": {
+      "rus": {
+        "text": null,
+        "design_differences": "КОНСТРУКТИВНЫЕ ОТЛИЧИЯ",
+        "operation_features": "ОСОБЕННОСТИ ЭКСПЛУАТАЦИИ"
+      },
+      "eng": {
+        "text": null,
+        "design_differences": "DESIGN DIFFERENCES",
+        "operation_features": "OPERATION FEATURES"
+      }
+    }
+  },
+  "maintenance": {
+    "unit": {
+      "general_instructions": {
+        "rus": {
+          "text": null,
+          "system_characteristics": "Техническое обслуживание проводится планово-предупредительным методом.",
+          "personnel_requirements": "К проведению ТО допускаются лица, изучившие настоящее РЭ и прошедшие инструктаж.",
+          "item_requirements": "Изделие, направляемое на ТО, должно быть очищено от пыли и загрязнений.",
+          "fuel_and_lubricants_list": ["ГСМ", "ГСМ"]
+        },
+        "eng": {
+          "text": null,
+          "system_characteristics": "Maintenance is carried out using a preventive method.",
+          "personnel_requirements": "Personnel who have studied this OM and received safety training are allowed to perform maintenance.",
+          "item_requirements": "The product sent for maintenance must be cleaned of dust and dirt.",
+          "fuel_and_lubricants_list": ["Fuel", "Fuel"]
+        }
+      },
+      "safety_measures": {
+        "rus": "Перед началом технического обслуживания необходимо обесточить изделие и сбросить давление в магистрали.",
+        "eng": "Before starting maintenance, de-energize the product and relieve pressure in the line."
+      },
+      "maintenance_procedure": {
+        "rus": {
+          "text": null,
+          "procedure_table": [
+            {
+              "item_and_work": "Изделие в целом. Внешний осмотр, очистка от загрязнений",
+              "maintenance_type": "Ежедневное ТО (ЕТО)",
+              "note": "Выполняется визуально"
+            }
+          ]
+        },
+        "eng": {
+          "text": null,
+          "procedure_table": [
+            {
+              "item_and_work": "The product as a whole. Visual inspection, cleaning from dirt",
+              "maintenance_type": "Daily Maintenance",
+              "note": "Performed visually"
+            }
+          ]
+        }
+      },
+      "operability_check": {
+        "rus": {
+          "text": null,
+          "check_table": [
+            {
+              "work_name": "Проверка выходного сигнала при нулевом давлении",
+              "executor": "И",
+              "tools": "Миллиамперметр постоянного тока",
+              "control_values": "4 ± 0.1 мА"
+            }
+          ],
+          "defectation_procedure": "Предремонтная дефектация проводится в случае несоответствия выходного сигнала контрольным значениям."
+        },
+        "eng": {
+          "text": null,
+          "check_table": [
+            {
+              "work_name": "Checking the output signal at zero pressure",
+              "executor": "E",
+              "tools": "DC Milliammeter",
+              "control_values": "4 ± 0.1 mA"
+            }
+          ],
+          "defectation_procedure": "Pre-repair defectation is carried out if the output signal does not match the control values."
+        }
+      },
+      "technical_inspection": {
+        "rus": "Периодическое техническое освидетельствование изделия контрольными органами не требуется.",
+        "eng": "Periodic technical inspection of the product by control authorities is not required."
+      },
+      "preservation": {
+        "rus": "КОНСЕРВАЦИЯ",
+        "eng": "PRESERVATION"
+      }
+    },
+    "parts": [
+      {
+        "part_name_rus": "Электронный блок",
+        "part_name_eng": "Electronic unit",
+        "servicing": {
+          "rus": "В процессе эксплуатации электронный блок обслуживания не требует.",
+          "eng": "During operation, the electronic unit requires no maintenance."
+        },
+        "dismantling_and_mounting": {
+          "rus": "ТЕКСТ ДЕМОНТАЖА И МОНТАЖА",
+          "eng": "DISMANTILING AND MOUNTING TEXT"
+        },
+        "adjustment_and_testing": {
+          "rus": "ТЕКСТ РЕГУЛИРОВАНИЯ И ИСПЫТАНИЯ",
+          "eng": "ADJUSTMENT AND TESTING TEXT"
+        },
+        "inspection_and_check": {
+          "rus": "Осмотр на наличие окисления контактов 1 раз в год.",
+          "eng": "Inspection for contact oxidation once a year."
+        },
+        "cleaning_and_painting": {
+          "rus": "ТЕКСТ ОЧИСТКИ И ОКРАСКИ",
+          "eng": "CLEANING AND PAINTING TEXT"
+        },
+        "preservation": {
+          "rus": "ТЕКСТ КОНСЕРВАЦИИ",
+          "eng": "PRESERVATION TEXT"
+        }
+      }
+    ]
+  },
+  "current_repair": {
+    "unit": {
+      "general_instructions": {
+        "rus": {
+          "text": null,
+          "repair_requirements": "Текущий ремонт изделия проводится на месте эксплуатации силами обслуживающего персонала.",
+          "methods": "Применяется агрегатный метод ремонта (замена неисправных съемных блоков на исправные из состава ЗИП).",
+          "personnel_qualifications": "К проведению ремонта допускаются специалисты КИПиА не ниже 4-го разряда.",
+          "diagnostic_capabilities": "Изделие имеет встроенную систему самодиагностики с выводом кодов ошибок на ЖКИ.",
+          "specialized_repair_parts": "Ремонт первичного измерительного преобразователя допускается только на предприятии-изготовителе или в специализированном сервисном центре."
+        },
+        "eng": {
+          "text": null,
+          "repair_requirements": "Current repair of the product is carried out at the operation site by the maintenance personnel.",
+          "methods": "An aggregate repair method is applied (replacement of faulty removable units with working ones from the spare parts kit).",
+          "personnel_qualifications": "I&C specialists of at least the 4th grade are allowed to perform repairs.",
+          "diagnostic_capabilities": "The product has a built-in self-diagnostic system with error codes displayed on the LCD.",
+          "specialized_repair_parts": "Repair of the primary measuring transducer is only permitted at the manufacturer's facility or a specialized service center."
+        }
+      },
+      "safety_measures": {
+        "rus": "Перед началом ремонтных работ необходимо полностью обесточить изделие, плавно сбросить давление в технологической магистрали и перекрыть отсечные клапаны.",
+        "eng": "Before starting repair work, completely de-energize the product, smoothly relieve pressure in the process line, and close the shut-off valves."
+      }
+    },
+    "parts": [
+      {
+        "part_name_rus": "Электронный блок",
+        "part_name_eng": "Electronic unit",
+        "rus": {
+          "text": null,
+          "fault_finding": "Указания по последовательности и объему работ для обнаружения отказов электронного блока изложены в инструкции ИО-123.",
+          "fault_elimination": "Устранение отказов осуществляется путем замены электронного модуля целиком с использованием отвертки крестовой.",
+          "repair_table": [
+            {
+              "failure_description": "Отсутствует выходной сигнал 4-20 мА",
+              "consequences": "Потеря информации о давлении в системе АСУ ТП",
+              "possible_causes": "Обрыв линии связи; выход из строя предохранителя",
+              "detection_methods": "Измерить напряжение питания на клеммах прибора. Проверить целостность предохранителя",
+              "elimination_methods": "Восстановить целостность линии связи. Заменить предохранитель"
+            }
+          ]
+        },
+        "eng": {
+          "text": null,
+          "fault_finding": "Instructions on the sequence and scope of work for detecting electronic unit failures are set out in manual IO-123.",
+          "fault_elimination": "Fault elimination is carried out by replacing the electronic module entirely using a Phillips screwdriver.",
+          "repair_table": [
+            {
+              "failure_description": "No 4-20 mA output signal",
+              "consequences": "Loss of pressure information in the DCS",
+              "possible_causes": "Communication line break; blown fuse",
+              "detection_methods": "Measure the supply voltage at the device terminals. Check fuse integrity",
+              "elimination_methods": "Restore the integrity of the communication line. Replace the fuse"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "storage": {
+    "rus": {
+      "text": null,
+      "placement_and_removal_rules": "Постановка изделия на хранение осуществляется в упаковке предприятия-изготовителя. Снятие с хранения производится непосредственно перед монтажом на объекте.",
+      "limited_shelf_life_parts": [
+        {
+          "part_name": "Комплект резиновых уплотнителей",
+          "shelf_life": "1 год",
+          "note": "Подлежит замене при превышении срока хранения перед вводом в эксплуатацию"
+        }
+      ],
+      "storage_works": {
+        "safety_measures": "Работы по подготовке к хранению и расконсервации проводить в хорошо проветриваемом помещении с использованием средств индивидуальной защиты.",
+        "preparation": "Перед постановкой на хранение изделие должно быть очищено от пыли, влаги и, при необходимости, законсервировано.",
+        "short_term_storage": "При кратковременном хранении (до 6 месяцев) обслуживание не требуется.",
+        "long_term_storage": "При длительном хранении необходимо проводить визуальный осмотр состояния упаковки и силикагеля не реже 1 раза в год.",
+        "removal": "Снятие изделия с хранения включает распаковывание, удаление консервационной смазки и визуальный осмотр на отсутствие коррозии."
+      },
+      "storage_conditions": "Хранение должно осуществляться в закрытых отапливаемых хранилищах (условия 1 по ГОСТ 15150-69) при температуре окружающего воздуха от +5 до +40 °С, относительной влажности до 80 % при +25 °С, в отсутствии прямого солнечного света и агрессивных паров.",
+      "disposal_methods": "Изделие не представляет опасности для жизни, здоровья людей и окружающей среды после окончания срока эксплуатации. Утилизация проводится по общим правилам утилизации промышленных электронных отходов.",
+      "max_storage_periods": "Предельный срок хранения в условиях отапливаемого хранилища – 2 года. Предельный срок хранения под навесом (в условиях макроклиматического района с умеренным климатом) – 6 месяцев."
+    },
+    "eng": {
+      "text": null,
+      "placement_and_removal_rules": "The product is placed in storage in the manufacturer's packaging. Removal from storage is carried out immediately before installation at the facility.",
+      "limited_shelf_life_parts": [
+        {
+          "part_name": "Rubber seal kit",
+          "shelf_life": "1 year",
+          "note": "Must be replaced if the storage period is exceeded before commissioning"
+        }
+      ],
+      "storage_works": {
+        "safety_measures": "Preparation for storage and depreservation work must be carried out in a well-ventilated area using personal protective equipment.",
+        "preparation": "Before being placed in storage, the product must be cleaned of dust, moisture, and preserved if necessary.",
+        "short_term_storage": "No maintenance is required during short-term storage (up to 6 months).",
+        "long_term_storage": "During long-term storage, it is necessary to visually inspect the condition of the packaging and silica gel at least once a year.",
+        "removal": "Removing the product from storage includes unpacking, removing preservation grease, and visually inspecting for corrosion."
+      },
+      "storage_conditions": "Storage must be carried out in closed heated warehouses (conditions 1 according to GOST 15150-69) at an ambient temperature of +5 to +40 °C, relative humidity up to 80% at +25 °C, in the absence of direct sunlight and aggressive vapors.",
+      "disposal_methods": "The product does not pose a danger to human life, health, or the environment after its service life. Disposal is carried out according to the general rules for industrial electronic waste disposal.",
+      "max_storage_periods": "The maximum storage period in a heated warehouse is 2 years. The maximum storage period under a canopy (in a macroclimatic region with a temperate climate) is 6 months."
+    }
+  },
+  "transportation": {
+    "rus": {
+      "text": null,
+      "requirements_and_conditions": "Транспортирование изделия допускается любым видом закрытого транспорта (в автомашинах, крытых вагонах, трюмах судов и др.) в соответствии с правилами, действующими на каждом виде транспорта. Условия транспортирования в части воздействия климатических факторов – 5 (ОЖ4) по ГОСТ 15150-69.",
+      "preparation": "Перед транспортированием изделие должно быть упаковано в штатную тару предприятия-изготовителя. Дополнительная фиксация подвижных частей не требуется.",
+      "fastening_methods": "Крепление тары в транспортных средствах должно производиться по правилам, исключающим перемещение, опрокидывание и соударение ящиков в пути следования.",
+      "loading_unloading": "Погрузка и выгрузка должны производиться в соответствии с манипуляционными знаками на таре без резких ударов. Запрещается бросать тару с изделием. Меры предосторожности: строповку крупногабаритных ящиков производить только за обозначенные места захвата.",
+      "transport_characteristics": {
+        "mass": "Масса брутто не более 2,5 кг.",
+        "dimensions": "Габаритные размеры в таре: 250 х 150 х 100 мм.",
+        "center_of_gravity": "Положение центра масс совпадает с геометрическим центром упаковки."
+      },
+      "towing_and_evacuation": null
+    },
+    "eng": {
+      "text": null,
+      "requirements_and_conditions": "Transportation of the product is allowed by any type of closed transport (in cars, covered wagons, ship holds, etc.) in accordance with the rules applicable to each type of transport. Transportation conditions regarding climatic factors – 5 (OZh4) according to GOST 15150-69.",
+      "preparation": "Before transportation, the product must be packed in the manufacturer's standard packaging. Additional fixation of moving parts is not required.",
+      "fastening_methods": "Fastening of containers in vehicles must be carried out according to rules that prevent the movement, overturning, and collision of boxes during transit.",
+      "loading_unloading": "Loading and unloading must be carried out in accordance with the handling marks on the container without sharp impacts. Dropping the container with the product is prohibited. Safety measures: sling large boxes only by the designated lifting points.",
+      "transport_characteristics": {
+        "mass": "Gross weight max 2.5 kg.",
+        "dimensions": "Overall dimensions in packaging: 250 x 150 x 100 mm.",
+        "center_of_gravity": "The center of mass coincides with the geometric center of the package."
+      },
+      "towing_and_evacuation": null
+    },
+    "images": {
+      "fastening_scheme": null,
+      "transport_scheme": null
+    }
+  },
+  "disposal": {
+    "rus": {
+      "text": null,
+      "safety_measures": "При проведении работ по утилизации необходимо соблюдать общие правила техники безопасности. Изделие должно быть полностью обесточено, отключено от магистралей и очищено от остатков рабочей среды.",
+      "preparation_and_dispatch": "Изделие подлежит разборке на основные узлы. Детали сортируются по видам материалов (черные металлы, цветные металлы, электронные компоненты, пластик) и передаются в специализированные организации по приему вторичного сырья.",
+      "calculated_disposed_parts": [
+        {
+          "part_name": "Корпус прибора",
+          "material": "Нержавеющая сталь V2A",
+          "weight_kg": "0.45",
+          "recycling_type": "Вторичная переработка (черный лом)"
+        },
+        {
+          "part_name": "Электронная плата",
+          "material": "Текстолит, медь, радиодетали",
+          "weight_kg": "0.05",
+          "recycling_type": "Переработка электронного лома"
+        }
+      ],
+      "operational_disposed_parts": [
+        {
+          "part_name": "Уплотнительные кольца",
+          "reason": "Замена при техническом обслуживании",
+          "recycling_type": "Утилизация ТБО"
+        }
+      ],
+      "disposal_indicators": "Коэффициент применяемости материалов – 0.95. Массовая доля вторично перерабатываемых материалов составляет не менее 90 % от общей массы изделия.",
+      "hazardous_disposal_methods": "Изделие не содержит радиоактивных, токсичных веществ и драгоценных металлов в количествах, подлежащих специальному учету. Особых методов утилизации не требуется."
+    },
+    "eng": {
+      "text": null,
+      "safety_measures": "General safety rules must be observed during disposal operations. The product must be completely de-energized, disconnected from pipelines, and cleaned of working medium residues.",
+      "preparation_and_dispatch": "The product must be dismantled into its main assemblies. Parts are sorted by material type (ferrous metals, non-ferrous metals, electronic components, plastic) and transferred to specialized recycling organizations.",
+      "calculated_disposed_parts": [
+        {
+          "part_name": "Device housing",
+          "material": "Stainless steel V2A",
+          "weight_kg": "0.45",
+          "recycling_type": "Recycling (ferrous scrap)"
+        },
+        {
+          "part_name": "Electronic board",
+          "material": "PCB, copper, electronic components",
+          "weight_kg": "0.05",
+          "recycling_type": "Electronic scrap recycling"
+        }
+      ],
+      "operational_disposed_parts": [
+        {
+          "part_name": "O-rings",
+          "reason": "Replacement during maintenance",
+          "recycling_type": "Solid waste disposal"
+        }
+      ],
+      "disposal_indicators": "Material applicability coefficient – 0.95. The mass fraction of recyclable materials is at least 90% of the total product mass.",
+      "hazardous_disposal_methods": "The product does not contain radioactive, toxic substances, or precious metals in quantities subject to special accounting. No special disposal methods are required."
+    }
+  },
+  "revision_sheet": true
+}

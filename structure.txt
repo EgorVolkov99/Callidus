@@ -1,0 +1,182 @@
+Callidus
+|---.env
+|---.venv
+|---app
+|   |---api
+|   |   |---__init__.py
+|   |   |---generator.py
+|   |---__init__.py
+|   |---main.py
+|---frontend
+|   |---index.html
+|---ktd
+|---manual
+|   |---projects
+|   |   |---NIKIMT_KIP
+|   |           input
+|   |           |---images
+|   |           |---manual_KKS-code_Product-name.json
+|   |           output
+|   |           |---docx
+|   |           |---pdf
+|   |           |---tex
+|   |           |---generation.log
+|   |---prompts
+|   |   |---Правило заполнения входного .json файла.txt
+|   |   |---Пример.json 1.txt
+|   |   |---Пример.json 2.txt
+|   |---src
+|   |   |---__init__.py
+|   |   |---config.py
+|   |   |---docx_builder.py
+|   |   |---docx_converter.py
+|   |   |---jinja_builder.py
+|   |   |---main.py
+|   |   |---models.py
+|   |   |---pdf_compiler.py
+|   |   |---processor.py
+|   |   |---sanitizer.py
+|   |---templates
+|   |   |---common
+|   |   |   |---document_frame.tex.j2
+|   |   |   |---large_stamp.tex.j2
+|   |   |   |---small_stamp.tex.j2
+|   |   |---pages
+|   |   |   |---first_page.tex.j2
+|   |   |   |---title_page.tex.j2
+|   |   |---sections
+|   |   |   |---main_parts.tex.j2
+|   |   |---Words
+|   |   |   |---manual_template_1.docx
+|   |   |   |---manual_template_2.docx
+|   |   |---main.tex.j2
+|   |---ideas.md
+|---passport
+|   |---projects
+|   |   |---NIKIMT_KIP
+|   |       |---input
+|   |       |---output
+|   |---prompts
+|   |   |---Правило заполнения входного .json файла.txt
+|   |   |---Пример.json 1.txt
+|   |   |---Пример.json 2.txt
+|   |---src
+|   |   |---__init__.py
+|   |   |---config.py
+|   |   |---docx_builder.py
+|   |   |---docx_converter.py
+|   |   |---jinja_builder.py
+|   |   |---main.py
+|   |   |---models.py
+|   |   |---pdf_compiler.py
+|   |   |---processor.py
+|   |   |---sanitizer.py
+|   |---templates
+|   |   |---common
+|   |   |   |---document_frame.tex.j2
+|   |   |   |---large_stamp.tex.j2
+|   |   |   |---small_stamp.tex.j2
+|   |   |---pages
+|   |   |   |---first_page.tex.j2
+|   |   |   |---title_page.tex.j2
+|   |   |---sections
+|   |   |   |---approval_tests.tex.j2
+|   |   |   |---basic_info.tex.j2
+|   |   |   |---conclusion.tex.j2
+|   |   |   |---deviations_list.tex.j2
+|   |   |   |---disposal_info.tex.j2
+|   |   |   |---main_parts.tex.j2
+|   |   |   |---packing.tex.j2
+|   |   |   |---preservation.tex.j2
+|   |   |   |---revision.tex.j2
+|   |   |   |---scope_of_delivery.tex.j2
+|   |   |   |---technical_data.tex.j2
+|   |   |   |---warranties.tex.j2
+|   |   |---Words
+|   |   |   |---passport_template.docx
+|   |   |---main.tex.j2
+|   |---ideas.md
+|---scripts
+|---standarts
+|---storage
+|   |---archives
+|   |   |---Batch_0e9d2e3b.zip
+|   |   |---Batch_ac0ea165.zip
+|   |   |---Batch_b767e1f6.zip
+|   |   |---Batch_f02b045a.zip
+|   |---outputs
+|   |   |---0e9d2e3b-361e-4f90-9fcb-94b671e0fc5d
+|   |   |---6727819e-c040-4b67-b1ef-afeff877ef12
+|   |   |---ac0ea165-548e-4cbd-8d04-11e8b4777fa9
+|   |   |---b767e1f6-6b51-4639-aec0-28b878d84a18
+|   |   |---f02b045a-53c7-4af7-889a-d9b4fc326790
+|   |   |---Паспорт_00XJN20CP501_WIKA.docx
+|   |   |---Паспорт_00XJN20CP501_WIKA.pdf
+|   |---.gitignore
+|   |---README.md
+|---requirements.txt
+|---run.py
+
+
+Callidus
+├── .env
+├── .venv
+├── requirements.txt                    # Есть
+├── run.py                              # Есть
+│
+├── app/                                # Есть
+│   ├── api/
+│   │   ├── routers/
+│   │   │   ├── docs.py
+│   │   │   └── projects.py
+│   │   └── dependencies.py
+│   ├── core/
+│   └── main.py
+│
+├── engine/                             # Есть
+│   ├── __init__.py
+│   ├── pipeline.py
+│   ├── builders/
+│   │   ├── jinja_env.py
+│   │   ├── docx_builder.py
+│   │   └── tex_builder.py
+│   ├── converters/
+│   │   ├── docx2pdf.py
+│   │   └── tex2pdf.py
+│   └── utils/
+│       ├── sanitizer.py
+│       └── file_helpers.py
+│
+├── document_types/                     # Есть
+│   ├── __init__.py
+│   ├── manual.py
+│   ├── passport.py
+│   └── ktd.py
+│
+├── templates/                          # Есть
+│   ├── common/
+│   ├── manual/
+│   ├── passport/
+│   └── prompts/
+│
+├── workspace/
+│   ├── NIKIMT_KIP/
+│   │   ├── inputs/
+│   │   └── config.json
+│   └── ANOTHER_PROJECT/
+│
+├── storage/
+│   ├── cache/
+│   ├── outputs/
+│   ├── archives/
+│   └── .gitignore
+│
+├── workers/                            # Есть
+│   ├── __init__.py
+│   ├── celery_app.py
+│   └── tasks.py
+│
+└── frontend/
+    ├── index.html
+    └── assets/
+
