@@ -1,10 +1,12 @@
 {
   "metadata": {
     "type": "passport",
-    "kks": "00XJN20CP501",
-    "equipment": "Differential pressure gauge",
+    "document_name_rus": "Паспорт",
+    "document_name_eng": "Data sheet",
     "document_designation": "00XJN20CP501 ПС",
-    "document_kks": ""
+    "document_kks": "",
+    "master_title": "base",
+    "language": "rus-eng"
   },
   "company": {
     "okpd_code": "26.51.52.120",

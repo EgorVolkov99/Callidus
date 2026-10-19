@@ -1,10 +1,12 @@
 {
   "metadata": {
     "type": "passport",
-    "kks": "00XXX00XX000",
-    "equipment": "Test_test",
+    "document_name_rus": "Паспорт",
+    "document_name_eng": "Data sheet",
     "document_kks": "",
-    "document_designation": "00XXX00XX000 ПС"
+    "document_designation": "00XXX00XX000 ПС",
+    "master_title": "base",
+    "language": "rus-eng"
   },
   "company": {
     "okpd_code": "00.00.00.000",

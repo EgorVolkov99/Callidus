@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, ConfigDict, field_validator
+from pydantic import BaseModel, Field, ConfigDict
 from typing import Optional, List, Union
 
 class BaseDocModel(BaseModel):
@@ -7,9 +7,13 @@ class BaseDocModel(BaseModel):
 
 class DocumentMetadata(BaseDocModel):
     # Базовые данные документа
-    type: str = Field(..., description="Тип документа: manual, passport, ktd")
+    type: str = Field(default="")
+    document_name_rus: str = Field(default="")
+    document_name_eng: str = Field(default="")
     document_designation: str = Field(default="")
     document_kks: str = Field(default="")
+    master_title: Optional[str] = "base"
+    language: Optional[str] = "rus-eng"
 
 class CompanyInfo(BaseDocModel):
     # Данные организации
@@ -33,10 +37,14 @@ class CompanyInfo(BaseDocModel):
 
 class UnitParameters(BaseDocModel):
     # Обязательно заполняемые параметры
-    kks_code: Union[List[str], str] = Field(default="")
-    product_name_rus: str = "!!! НЕ НАЗНАЧЕНО НАИМЕНОВАНИЕ ОБОРУДОВАНИЯ/ИЗДЕЛИЯ !!!"
-    product_name_eng: str = "!!! NO NAME OF THE EQUIPMENT/PRODUCT ASSIGNED !!!"
+    kks_code: Union[List[str], str] = Field(default="!!! НЕ НАЗНАЧЕН ККС КОД !!!")
+    product_name_rus: str = Field(default="!!! НЕ НАЗНАЧЕНО НАИМЕНОВАНИЕ ОБОРУДОВАНИЯ/ИЗДЕЛИЯ !!!")
+    product_name_eng: str = Field(default="!!! NO NAME OF THE EQUIPMENT/PRODUCT ASSIGNED !!!")
     # Дополнительные параметры
+    product_system_rus: Optional[str] = ""
+    product_system_eng: Optional[str] = ""
+    product_building_rus: Optional[str] = ""
+    product_building_eng: Optional[str] = ""
     product_name_2_rus: Optional[str] = ""
     product_name_2_eng: Optional[str] = ""
     product_brand: Union[List[str], str, None] = ""

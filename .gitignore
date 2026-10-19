@@ -26,3 +26,9 @@ Thumbs.db
 # Файлы проектов
 storage/
 workspace/
+
+# Скрипты
+scripts/
+
+# Подписи
+templates/ms_word/signatures/

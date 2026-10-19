@@ -1,9 +1,12 @@
 {
   "metadata": {
     "type": "manual",
-    "equipment": "Pressure switch",
+    "document_name_rus": "Руководство по эксплуатации",
+    "document_name_eng": "Operation manual",
     "document_designation": "00KPB10CP003 РЭ",
-    "document_kks": ""
+    "document_kks": "",
+    "master_title": "base",
+    "language": "rus-eng"
   },
   "company": {
     "okpd_code": "26.51.52.110",

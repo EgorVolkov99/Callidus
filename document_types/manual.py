@@ -16,5 +16,4 @@ class ManualData(BaseDocModel):
     storage: Optional[Dict[str, Any]] = None
     transportation: Optional[Dict[str, Any]] = None
     disposal: Optional[Dict[str, Any]] = None
-
-    revision: bool = False
+    revision_sheet: Optional[bool] = True

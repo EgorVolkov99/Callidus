@@ -1,10 +1,12 @@
 {
   "metadata": {
     "type": "passport",
-    "kks": "00KPA30CP001",
-    "equipment": "Pressure sensor"
+    "document_name_rus": "Паспорт",
+    "document_name_eng": "Data sheet",
     "document_designation": "00KPA30CP001 ПС",
-    "document_kks": ""
+    "document_kks": "",
+    "master_title": "base",
+    "language": "rus-eng"
   },
   "company": {
     "okpd_code": "26.51.52.110",

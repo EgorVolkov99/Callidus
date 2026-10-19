@@ -37,19 +37,7 @@ Callidus
 |   |   |---processor.py
 |   |   |---sanitizer.py
 |   |---templates
-|   |   |---common
-|   |   |   |---document_frame.tex.j2
-|   |   |   |---large_stamp.tex.j2
-|   |   |   |---small_stamp.tex.j2
-|   |   |---pages
-|   |   |   |---first_page.tex.j2
-|   |   |   |---title_page.tex.j2
-|   |   |---sections
-|   |   |   |---main_parts.tex.j2
-|   |   |---Words
-|   |   |   |---manual_template_1.docx
-|   |   |   |---manual_template_2.docx
-|   |   |---main.tex.j2
+
 |   |---ideas.md
 |---passport
 |   |---projects
@@ -117,66 +105,36 @@ Callidus
 |---requirements.txt
 |---run.py
 
-
-Callidus
-├── .env
-├── .venv
-├── requirements.txt                    # Есть
-├── run.py                              # Есть
-│
-├── app/                                # Есть
-│   ├── api/
-│   │   ├── routers/
-│   │   │   ├── docs.py
-│   │   │   └── projects.py
-│   │   └── dependencies.py
-│   ├── core/
-│   └── main.py
-│
-├── engine/                             # Есть
-│   ├── __init__.py
-│   ├── pipeline.py
-│   ├── builders/
-│   │   ├── jinja_env.py
-│   │   ├── docx_builder.py
-│   │   └── tex_builder.py
-│   ├── converters/
-│   │   ├── docx2pdf.py
-│   │   └── tex2pdf.py
-│   └── utils/
-│       ├── sanitizer.py
-│       └── file_helpers.py
-│
-├── document_types/                     # Есть
-│   ├── __init__.py
-│   ├── manual.py
-│   ├── passport.py
-│   └── ktd.py
-│
-├── templates/                          # Есть
-│   ├── common/
-│   ├── manual/
-│   ├── passport/
-│   └── prompts/
-│
-├── workspace/
-│   ├── NIKIMT_KIP/
-│   │   ├── inputs/
-│   │   └── config.json
-│   └── ANOTHER_PROJECT/
-│
-├── storage/
-│   ├── cache/
-│   ├── outputs/
-│   ├── archives/
-│   └── .gitignore
-│
-├── workers/                            # Есть
-│   ├── __init__.py
-│   ├── celery_app.py
-│   └── tasks.py
-│
-└── frontend/
-    ├── index.html
-    └── assets/
-
+|   |---templates
+|   |   |---latex
+|   |   |---ms_word
+|   |   |   |---bodies
+|   |   |   |   |---manual_rus-eng.docx
+|   |   |   |   |---passport_rus-eng.docx
+|   |   |   |---masters
+|   |   |   |   |---base_rus-eng.docx
+|   |   |   |   |---nikimt_rus-eng.docx
+|   |   |   |---sections
+|   |   |   |   |---common
+|   |   |   |   |   |---revision_sheet_rus-eng.docx
+|   |   |   |   |---manual
+|   |   |   |   |   |---current_repair_rus-eng.docx
+|   |   |   |   |   |---description_and_operation_rus-eng.docx
+|   |   |   |   |   |---disposal_rus-eng.docx
+|   |   |   |   |   |---introducton_rus-eng.docx
+|   |   |   |   |   |---maintenance_rus-eng.docx
+|   |   |   |   |   |---storage_rus-eng.docx
+|   |   |   |   |   |---transportation_rus-eng.docx
+|   |   |   |   |   |---usage_rus-eng.docx
+|   |   |   |   |---passport
+|   |   |   |   |   |---approval_tests_rus-eng.docx
+|   |   |   |   |   |---basic_info_rus-eng.docx
+|   |   |   |   |   |---conclusion_rus-eng.docx
+|   |   |   |   |   |---deviations_rus-eng.docx
+|   |   |   |   |   |---disposal_rus-eng.docx
+|   |   |   |   |   |---main_parts_rus-eng.docx
+|   |   |   |   |   |---packing_rus-eng.docx
+|   |   |   |   |   |---preservation_rus-eng.docx
+|   |   |   |   |   |---scope_of_delivery_rus-eng.docx
+|   |   |   |   |   |---technical_data_rus-eng.docx
+|   |   |   |   |   |---warranties_rus-eng.docx

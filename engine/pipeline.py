@@ -1,13 +1,13 @@
 import logging
 from pathlib import Path
-from pydantic import BaseModel
 from typing import Dict, Any
 
 from .builders.tex_builder import TexBuilder
-from .builders.docx_builder import DocxBuilder
+from engine.builders.modular_builder import ModularDocxBuilder
 from .converters.tex2pdf import TexToPdfConverter
 from .converters.docx2pdf import DocxToPdfConverter
 
+logger = logging.getLogger("callidus")
 
 class DocumentPipeline:
     """Единый конвейер сборки документов."""
@@ -17,11 +17,12 @@ class DocumentPipeline:
         self.output_dir = output_base_dir
 
     def build_word(self, data: Dict[str, Any], doc_type: str, template_name: str, out_filename: str) -> Path:
-        """Сборка Word документа."""
-        template_path = self.templates_dir / doc_type / "word" / template_name
+        """Сборка Word документа."""# Получаем корневую директорию проекта
+        BASE_DIR = Path(__file__).resolve().parent.parent
+        TEMPLATE_DIR = BASE_DIR / "templates"
         output_path = self.output_dir / "docx" / f"{out_filename}.docx"
 
-        builder = DocxBuilder(template_path)
+        builder = ModularDocxBuilder(TEMPLATE_DIR)
         # Примечание: Здесь данные уже должны содержать готовые subdocs,
         # либо мы передаем инстанс builder-а в адаптер (ViewModel), чтобы он встроил таблицы.
         return builder.render_and_save(data, output_path)

@@ -1,18 +1,12 @@
 {
   "metadata": {
     "type": "manual",
-    "kks": [
-      "00KPB21CP003",
-      "00KPB21CP004",
-      "00KPB21CP006",
-      "00KPB21CP007",
-      "00KPB21CP008",
-      "00KPB21CP009",
-      "00KPB21CP024",
-      "00KPB21CP025"
-    ],
-    "equipment": "Pressure transmitter",
-    "document_kks": ""
+    "document_name_rus": "Руководство по эксплуатации",
+    "document_name_eng": "Operation manual",
+    "document_designation": "Преобразователь давления",
+    "document_kks": "",
+    "master_title": "base",
+    "language": "rus-eng"
   },
   "company": {
     "okpd_code": "26.51.52.110",
