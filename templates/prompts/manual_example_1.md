@@ -4,7 +4,7 @@
     "document_name_rus": "Руководство по эксплуатации",
     "document_name_eng": "Operation manual",
     "document_designation": "00KPB10CP003 РЭ",
-    "document_kks": "",
+    "document_kks": "ТДГУ.00KPB10CP003", 
     "master_title": "base",
     "language": "rus-eng"
   },
@@ -30,6 +30,10 @@
     "kks_code": [
       "00KPB10CP003"
     ],
+    "product_system_rus": "Система сжигания ТРО",
+    "product_system_eng": "COMBUSTION SYSTEM SRW",
+    "product_building_rus": "АЭС «АККУЮ» 1, 2, 3, 4",
+    "product_building_eng": "AKKUYU NPP 1, 2, 3, 4",
     "product_name_rus": "Реле давления",
     "product_name_eng": "Pressure switch",
     "product_name_2_rus": "реле давления",

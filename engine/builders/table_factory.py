@@ -14,8 +14,20 @@ class TableFactory:
     Гарантирует соблюдение спецификации OOXML.
     """
 
-    def __init__(self, tpl):
+    def __init__(self, tpl, master_name="base"):
         self.tpl = tpl
+        self.master_name = master_name
+
+        if self.tpl.docx is None:
+            self.tpl.init_docx()
+
+        # Задаем правила шрифтов в зависимости от титульника
+        if self.master_name == "nikimt":
+            self.font_name = 'Times New Roman'
+            self.font_size = Pt(12)
+        else:
+            self.font_name = 'Times New Roman'
+            self.font_size = Pt(11)
 
     def _create_stub(self):
         return self.tpl.new_subdoc()
@@ -95,8 +107,8 @@ class TableFactory:
         fmt.line_spacing = 1
 
         r = p.add_run(text)
-        r.font.name = 'Times New Roman'
-        r.font.size = Pt(11)
+        r.font.name = self.font_name
+        r.font.size = self.font_size
         if is_header:
             r.bold = True
 
@@ -173,7 +185,7 @@ class TableFactory:
                 cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
 
                 val = str(item_row[i]) if i < len(item_row) and item_row[i] is not None else ""
-                if headers and "Серийный номер" in headers and i == 2 and not val:
+                if headers and ("Серийный номер" in headers or "Serial No" in headers) and i == 2 and not val:
                     val = "_______________"
                 self._format_cell(cell, val)
 
@@ -268,7 +280,7 @@ class TableFactory:
         if not test_data: return subdoc
 
         cols = [
-            {"hdr": "Name and designation" if is_eng else "Наименование и обозначение", "key": "stamp", "width": Cm(3)}]
+            {"hdr": "Name and designation" if is_eng else "Наименование и обозначение", "key": "stamp", "width": Cm(3.6)}]
         if has_extra:
             cols.extend([
                 {"hdr": "Type of test" if is_eng else "Вид испытаний", "key": "test_type", "width": Cm(5.2)},
@@ -313,7 +325,7 @@ class TableFactory:
                     pass
                 elif key == "result":
                     self._format_cell(cell,
-                                      str(data_item.get(key) or '') + "\n_________________________________________\n\n",
+                                      str(data_item.get(key) or '') + "\n__________________________________\n\n",
                                       align="left")
                 else:
                     val = str(data_item.get(key) or '-')
@@ -560,4 +572,113 @@ class TableFactory:
         except Exception as e:
             logger.error(f"[TableFactory] Ошибка в valves: {e}")
 
+        return subdoc
+
+    def build_ve_table(self, ve_data: dict, language: str = "rus-eng"):
+        """
+        Генерация таблицы ВЭ с поддержкой двуязычной верстки в одной ячейке.
+        """
+        # 1. СОЗДАЕМ СУБДОКУМЕНТ (Правильный способ для docxtpl)
+        subdoc = self.tpl.new_subdoc()
+        table = subdoc.add_table(rows=1, cols=5)
+        table.style = 'Table Grid'
+        table.autofit = False
+
+        col_widths = [4.5, 6, 2, 1.75, 3.75]
+        for i, width in enumerate(col_widths):
+            table.columns[i].width = Cm(width)
+
+        # 2. Формируем заголовки
+        if language == "rus-eng":
+            headers = [
+                "Обозначение документа\nDocument designation",
+                "Наименование документа\nDocument description",
+                "Кол-во экз., шт.\nQuantity, pcs.",
+                "Номер экз.\nCopy number",
+                "Местонахождение\nLocation"
+            ]
+        elif language == "eng":
+            headers = ["Document designation", "Document description", "Quantity, pcs.", "Copy number", "Location"]
+        else:
+            headers = ["Обозначение документа", "Наименование документа", "Кол-во экз., шт.",
+                       "Номер экз.", "Местонахождение"]
+
+        hdr_cells = table.rows[0].cells
+        for i, header_text in enumerate(headers):
+            self._format_cell(hdr_cells[i], header_text, is_header=True, align="center", bg_color="F2F2F2", bottom_border="4")
+            hdr_cells[i].width = Cm(col_widths[i])
+
+        # 3. Настраиваем разделы
+        if language == "rus-eng":
+            sections = [
+                ("general_docs", "Документация общая\nGeneral documentation"),
+                ("component_docs", "Документация на составные части изделия\nComponent documentation"),
+                ("folders_list", "Перечень папок и футляров\nList of folders and cases")
+            ]
+        elif language == "eng":
+            sections = [
+                ("general_docs", "General documentation"),
+                ("component_docs", "Component documentation"),
+                ("folders_list", "List of folders and cases")
+            ]
+        else:
+            sections = [
+                ("general_docs", "Документация общая"),
+                ("component_docs", "Документация на составные части изделия"),
+                ("folders_list", "Перечень папок и футляров")
+            ]
+
+        # УМНАЯ ФУНКЦИЯ СЛИЯНИЯ ЯЗЫКОВ
+        def combine(val_r, val_e):
+            val_r, val_e = str(val_r).strip(), str(val_e).strip()
+            if not val_r and not val_e: return "—"
+            if val_r == val_e: return val_r
+            if not val_e: return val_r
+            if not val_r: return val_e
+            return f"{val_r}\n{val_e}"
+
+            # 4. Заполняем таблицу
+
+        for sec_key, sec_title in sections:
+            items_rus = ve_data.get(sec_key, {}).get("rus", [])
+            items_eng = ve_data.get(sec_key, {}).get("eng", [])
+
+            if not items_rus and not items_eng:
+                continue
+
+            section_row = table.add_row()
+            section_row.cells[0].merge(section_row.cells[4])
+            self._format_cell(section_row.cells[0], sec_title, is_header=True, align="center", bg_color="E0E0E0")
+
+            max_len = max(len(items_rus), len(items_eng))
+            for i in range(max_len):
+                item_r = items_rus[i] if i < len(items_rus) else {}
+                item_e = items_eng[i] if i < len(items_eng) else {}
+
+                row = table.add_row()
+
+                if language == "rus-eng":
+                    desig = combine(item_r.get("designation", ""), item_e.get("designation", ""))
+                    name = combine(item_r.get("name", ""), item_e.get("name", ""))
+                    qty = combine(item_r.get("quantity", ""), item_e.get("quantity", ""))
+                    copy_num = combine(item_r.get("copy_number", ""), item_e.get("copy_number", ""))
+                    loc = combine(item_r.get("location", ""), item_e.get("location", ""))
+                else:
+                    target_item = item_e if language == "eng" else item_r
+                    desig = str(target_item.get("designation", "")).strip() or "—"
+                    name = str(target_item.get("name", "")).strip() or "—"
+                    qty = str(target_item.get("quantity", "")).strip() or "—"
+                    copy_num = str(target_item.get("copy_number", "")).strip() or "—"
+                    loc = str(target_item.get("location", "")).strip() or "—"
+
+                self._format_cell(row.cells[0], desig, align="center")
+                self._format_cell(row.cells[1], name, align="left")
+                self._format_cell(row.cells[2], qty, align="center")
+                self._format_cell(row.cells[3], copy_num, align="center")
+                self._format_cell(row.cells[4], loc, align="center")
+
+                for j, width in enumerate(col_widths):
+                    row.cells[j].width = Cm(width)
+
+        # ВОЗВРАЩАЕМ ГОТОВЫЙ СУБДОКУМЕНТ (Вместо сырого XML)
         return subdoc

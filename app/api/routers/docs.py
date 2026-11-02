@@ -11,18 +11,17 @@ from engine.pipeline import DocumentPipeline
 from app.api.dependencies import get_pipeline, STORAGE_DIR
 from app.core.logger import logger
 
-# Подключаем оба адаптера
+# Подключаем адаптеры
 from app.adapters.passport_adapter import prepare_passport_context
 from app.adapters.manual_adapter import prepare_manual_context
 
 router = APIRouter()
 tasks_status = {}
 
+
 def process_batch(
         batch_id: str,
         files_data: list,
-        doc_type: str,
-        template_name: str,
         need_docx: bool,
         need_pdf: bool,
         need_zip: bool,
@@ -31,7 +30,7 @@ def process_batch(
     tasks_status[batch_id]["status"] = "processing"
     generated_files = []
 
-    logger.info(f"Начало обработки batch_id: {batch_id}. Файлов: {len(files_data)}, Тип: {doc_type}")
+    logger.info(f"Начало обработки batch_id: {batch_id}. Файлов: {len(files_data)}")
 
     for idx, f_data in enumerate(files_data):
         raw_data = f_data["content"]
@@ -47,28 +46,57 @@ def process_batch(
             if isinstance(kks, list) and kks:
                 kks = kks[0]
 
-            # Определяем тип документа из метаданных (с фолбеком на запрос)
-            actual_doc_type = raw_data.get("metadata", {}).get("type", doc_type)
+            # Теперь тип документа и мастер-шаблон всегда берутся из самого JSON
+            actual_doc_type = raw_data.get("metadata", {}).get("type")
+            master_title = raw_data.get("metadata", {}).get("master_title", "base")
 
-            brand = unit_info.get("product_brand", "Brand").replace("/", "_")
-            out_name = f"{actual_doc_type}_{kks}_{brand}"
+            doc_name = raw_data.get("metadata", {}).get("document_name_rus")
+            doc_designation = raw_data.get("metadata", {}).get("document_designation").replace("/", "_")
+            product = unit_info.get("product_name_rus").replace("/", "_")
+            brand = unit_info.get("product_brand").replace("/", "_")
+            out_name = f"{doc_name} {doc_designation}. {product} {brand}"
 
-            # Чистый роутинг адаптеров
+            # Чистый роутинг адаптеров (поддержка ВЭ и будущих форматов)
             if actual_doc_type == "manual":
                 prepared_data = prepare_manual_context(raw_data)
             elif actual_doc_type == "passport":
                 prepared_data = prepare_passport_context(raw_data)
             else:
+                # Если это ВЭ ("ve") или другой тип, для которого еще нет адаптера, передаем как есть
                 prepared_data = raw_data
+
+            def clean_nulls(d):
+                if isinstance(d, dict):
+                    return {k: clean_nulls(v) for k, v in d.items()}
+                elif isinstance(d, list):
+                    return [clean_nulls(v) for v in d]
+                elif d is None:
+                    return ""
+                return d
+
+            # Очищаем весь контекст от null перед генерацией
+            prepared_data = clean_nulls(prepared_data)
+
+            if "unit" not in prepared_data:
+                prepared_data["unit"] = {}
+
+            kks_val = prepared_data["unit"].get("kks_code")
+            if not kks_val:
+                # Если кода нет, передаем пустой список (join отработает без ошибок и вернет пустоту)
+                prepared_data["unit"]["kks_code"] = []
+            elif isinstance(kks_val, str):
+                # Если код - это строка, оборачиваем ее в список, чтобы join не разбил ее по буквам
+                prepared_data["unit"]["kks_code"] = [kks_val]
 
             if need_docx or need_pdf:
                 tasks_status[batch_id]["files"][file_id]["log"] = "Генерация DOCX..."
                 logger.debug(f"[{batch_id}] Старт генерации Word для {out_name}")
 
+                # В pipeline передаем master_title вместо старого template_name
                 docx_path = pipeline.build_word(
                     data=prepared_data,
                     doc_type=actual_doc_type,
-                    template_name=template_name,
+                    template_name=master_title,
                     out_filename=out_name
                 )
                 if need_docx:
@@ -131,12 +159,14 @@ def process_batch(
     tasks_status[batch_id]["status"] = "completed"
     tasks_status[batch_id]["global_log"] = "Все задачи завершены."
 
+
 @router.post("/generate")
 async def generate_batch(
         background_tasks: BackgroundTasks,
-        doc_type: str = Form(...),
-        template_name: str = Form(...),
-        need_docx: bool = Form(False),
+        project_name: str = Form("NIKIMT_KIP"),
+        master_title: str = Form("nikimt"),  # Новое поле из UI (Шаблон)
+        language: str = Form("rus-eng"),  # Новое поле из UI (Язык)
+        need_docx: bool = Form(False),  # Form(False) спасает от 422 ошибки
         need_pdf: bool = Form(False),
         need_zip: bool = Form(False),
         files: List[UploadFile] = File(...),
@@ -144,41 +174,52 @@ async def generate_batch(
 ):
     batch_id = str(uuid.uuid4())
     logger.info(f"=== НОВЫЙ ЗАПРОС НА ГЕНЕРАЦИЮ (Batch: {batch_id}) ===")
-    logger.info(f"Параметры: doc_type={doc_type}, DOCX={need_docx}, PDF={need_pdf}, ZIP={need_zip}")
+    logger.info(f"UI Параметры: master_title={master_title}, language={language}, DOCX={need_docx}, PDF={need_pdf}")
 
     files_data = []
     file_statuses = {}
-
-    try:
-        ModelClass = PassportData if doc_type == "passport" else ManualData
-        logger.debug(f"Выбрана модель валидации: {ModelClass.__name__}")
-    except Exception as e:
-        logger.error(f"Ошибка при выборе модели: {e}")
-        raise HTTPException(status_code=500, detail="Внутренняя ошибка выбора модели")
 
     for idx, file in enumerate(files):
         file_id = f"file_{idx}"
         try:
             content = await file.read()
-            logger.debug(f"Файл {file.filename} прочитан. Размер: {len(content)} байт.")
-
             raw_data = json.loads(content)
 
-            if hasattr(ModelClass, 'model_validate'):
-                validated_data = ModelClass.model_validate(raw_data)
-                dumped_data = validated_data.model_dump()
+            # 1. ПРИНУДИТЕЛЬНОЕ ПЕРЕОПРЕДЕЛЕНИЕ ПАРАМЕТРОВ ИЗ ИНТЕРФЕЙСА
+            if "metadata" not in raw_data:
+                raw_data["metadata"] = {}
+            raw_data["metadata"]["master_title"] = master_title
+            raw_data["metadata"]["language"] = language
+
+            # 2. ДИНАМИЧЕСКОЕ ОПРЕДЕЛЕНИЕ ТИПА ИЗ JSON
+            doc_type = raw_data["metadata"].get("type", "passport")
+
+            # 3. УМНЫЙ ВЫБОР МОДЕЛИ ВАЛИДАЦИИ
+            if doc_type == "passport":
+                ModelClass = PassportData
+            elif doc_type == "manual":
+                ModelClass = ManualData
             else:
-                validated_data = ModelClass.parse_obj(raw_data)
-                dumped_data = validated_data.dict()
+                ModelClass = None  # Для новых типов (например, "ve"), пока для них нет Pydantic-модели
+
+            if ModelClass:
+                if hasattr(ModelClass, 'model_validate'):
+                    validated_data = ModelClass.model_validate(raw_data)
+                    dumped_data = validated_data.model_dump()
+                else:
+                    validated_data = ModelClass.parse_obj(raw_data)
+                    dumped_data = validated_data.dict()
+                logger.info(f"Файл {file.filename} успешно прошел Pydantic-валидацию как {doc_type}.")
+            else:
+                dumped_data = raw_data
+                logger.info(f"Файл {file.filename} загружен без Pydantic-валидации (тип: {doc_type}).")
 
             files_data.append({"filename": file.filename, "content": dumped_data})
             file_statuses[file_id] = {"name": file.filename, "status": "В очереди", "log": "Ожидание..."}
 
-            logger.info(f"Файл {file.filename} успешно прошел Pydantic-валидацию.")
-
         except Exception as e:
             error_trace = traceback.format_exc()
-            logger.error(f"Ошибка валидации файла {file.filename}:\n{error_trace}")
+            logger.error(f"Ошибка чтения/валидации файла {file.filename}:\n{error_trace}")
             file_statuses[file_id] = {"name": file.filename, "status": "❌ Ошибка валидации", "log": str(e)}
 
     tasks_status[batch_id] = {
@@ -196,7 +237,7 @@ async def generate_batch(
     if files_data:
         logger.info(f"Передача Batch {batch_id} в фоновую обработку BackgroundTasks...")
         background_tasks.add_task(
-            process_batch, batch_id, files_data, doc_type, template_name, need_docx, need_pdf, need_zip, pipeline
+            process_batch, batch_id, files_data, need_docx, need_pdf, need_zip, pipeline
         )
     else:
         logger.warning(f"Batch {batch_id} отменен: нет валидных файлов.")
@@ -204,6 +245,7 @@ async def generate_batch(
         tasks_status[batch_id]["global_log"] = "Нет валидных файлов для обработки."
 
     return {"batch_id": batch_id}
+
 
 @router.get("/status/{batch_id}")
 async def get_status(batch_id: str):

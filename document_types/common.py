@@ -51,6 +51,7 @@ class UnitParameters(BaseDocModel):
     product_model: Union[List[str], str, None] = ""
     climate: Optional[str] = ""
     placement: Optional[str] = ""
+    atmosphere: Optional[str] = ""
     manual_code: Optional[str] = ""
     rr1_code: Optional[str] = ""
     rr2_code: Optional[str] = ""

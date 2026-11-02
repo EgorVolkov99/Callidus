@@ -24,11 +24,11 @@ Thumbs.db
 .env
 
 # Файлы проектов
-storage/
-workspace/
+storage/*
+workspace/*
 
 # Скрипты
-scripts/
+scripts/*
 
 # Подписи
-templates/ms_word/signatures/
+templates/ms_word/signatures/*

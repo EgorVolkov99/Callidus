@@ -3,9 +3,9 @@
     "type": "passport",
     "document_name_rus": "Паспорт",
     "document_name_eng": "Data sheet",
-    "document_designation": "00XJN20CP501 ПС",
-    "document_kks": "",
-    "master_title": "base",
+    "document_designation": "СМ1622.00.00.00.01.385",
+    "document_kks": "AKU.0168.00UKS.00XJN20CP501.DA0001",
+    "master_title": "nikimt",
     "language": "rus-eng"
   },
   "company": {
@@ -28,6 +28,10 @@
   },
   "unit": {
     "kks_code": "00XJN20CP501",
+    "product_system_rus": "Система сжигания ТРО",
+    "product_system_eng": "COMBUSTION SYSTEM SRW",
+    "product_building_rus": "АЭС «АККУЮ» 1, 2, 3, 4",
+    "product_building_eng": "AKKUYU NPP 1, 2, 3, 4",
     "product_name_rus": "Манометр дифференциального давления",
     "product_name_eng": "Differential pressure gauge",
     "product_name_2_rus": "манометра дифференциального давления",
@@ -36,6 +40,7 @@
     "product_model": "732.51.100",
     "climate": "Т",
     "placement": "4",
+    "atmosphere": "III",
     "manual_code": "00XJN20CP501 РЭ",
     "rr1_code": null,
     "rr2_code": null,

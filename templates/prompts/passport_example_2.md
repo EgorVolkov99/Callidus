@@ -37,6 +37,7 @@
     "product_model": "PN-400-SER14-MFRKG/US/IV/18019",
     "climate": "Т",
     "placement": "4",
+    "atmosphere": "III",
     "manual_code": "00KPA30CP001 РЭ",
     "rr1_code": "00KPACP001 РР1",
     "rr2_code": "00KPACP001 РР2",

@@ -35,12 +35,14 @@ class ModularDocxBuilder:
 
         # Полный перечень всех возможных секций для сборки
         all_sections = [
-            "basic_info", "technical_data", "main_parts", "approval_tests",
+            "toc", "basic_info", "technical_data", "main_parts", "approval_tests",
             "scope_of_delivery", "warranties", "preservation", "packing",
-            "deviations", "conclusion", "disposal", "revision_sheet",
+            "deviations", "conclusion", "disposal", "terms_list", "documents_list", "revision_sheet",
             "introduction", "description_and_operation", "usage", "maintenance",
-            "current_repair", "storage", "transportation"
+            "current_repair", "storage", "transportation", "ve"
         ]
+
+        logger.info(f"[ModularBuilder] Инициализация скелета ({master_path.name})...")
 
         # ==============================================================
         # ЭТАП 1: РЕНДЕРИНГ ОТДЕЛЬНЫХ РАЗДЕЛОВ (SECTIONS) В ПАМЯТИ
@@ -50,16 +52,23 @@ class ModularDocxBuilder:
 
         for sec_key in all_sections:
             if context.get(sec_key):
-                # Умный поиск файла: сначала ищем в специфичной папке (passport/manual), затем в common
-                sec_file = sections_dir / doc_type / f"{sec_key}_{language_option}.docx"
 
+                # 1. Пытаемся найти специфичный для шаблона файл (например, nikimt_...)
+                sec_file = sections_dir / doc_type / f"{master_name}_{sec_key}_{language_option}.docx"
                 if not sec_file.exists():
-                    sec_file = sections_dir / "common" / f"{sec_key}_{language_option}.docx"
+                    sec_file = sections_dir / "common" / f"{master_name}_{sec_key}_{language_option}.docx"
+
+                # 2. ФОЛБЭК: Если кастомного файла нет, берем базовый (base_...)
+                if not sec_file.exists():
+                    logger.debug(f"Кастомный {master_name}_{sec_key} не найден. Используем base_...")
+                    sec_file = sections_dir / doc_type / f"base_{sec_key}_{language_option}.docx"
+                    if not sec_file.exists():
+                        sec_file = sections_dir / "common" / f"base_{sec_key}_{language_option}.docx"
 
                 if sec_file.exists():
                     logger.info(f"[ModularBuilder] Сборка раздела: {sec_key}")
                     sec_tpl = DocxTemplate(sec_file)
-                    sec_factory = TableFactory(sec_tpl)
+                    sec_factory = TableFactory(sec_tpl, master_name=master_name)
 
                     sec_context = context.copy()
 
@@ -238,6 +247,10 @@ class ModularDocxBuilder:
             context["manual_operational_disposal_table_eng"] = factory.build_generic_table(
                 ["Part name", "Reason for disposal", "Recycling type"], disposal.get("operational_flat_eng", []),
                 [6.0, 6.0, 6.0])
+
+        elif sec_key == "ve":
+            ve_data = context.get("ve_data", {})
+            context["ve_table"] = factory.build_ve_table(ve_data, language=context.get("metadata", {}).get("language", "rus-eng"))
 
     def _inject_signatures(self, context: dict, tpl: DocxTemplate):
         """

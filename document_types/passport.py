@@ -20,4 +20,6 @@ class PassportData(BaseDocModel):
     deviations: Optional[Union[Dict[str, Any], bool]] = None
     conclusion: Optional[Union[Dict[str, Any], bool]] = None
     disposal: Optional[Union[Dict[str, Any], bool]] = None
+    terms_list: Optional[Union[Dict[str, Any], bool]] = None
+    documents_list: Optional[Union[Dict[str, Any], bool]] = None
     revision_sheet: Optional[bool] = True

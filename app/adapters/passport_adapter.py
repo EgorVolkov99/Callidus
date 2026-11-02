@@ -118,7 +118,7 @@ def prepare_passport_context(raw_data: Dict[str, Any]) -> Dict[str, Any]:
     sections_config = [
         "basic_info", "technical_data", "main_parts", "approval_tests",
         "scope_of_delivery", "warranties", "preservation", "packing",
-        "deviations", "conclusion", "disposal"
+        "deviations", "conclusion", "disposal", "terms_list", "documents_list"
     ]
 
     for sec_key in sections_config:
