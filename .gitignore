@@ -1,6 +1,7 @@
 # Виртуальное окружение
 .venv/
 venv/
+.gigacode
 
 # Кэш Python и скомпилированные файлы
 __pycache__/
@@ -18,10 +19,16 @@ __pycache__/
 Thumbs.db
 
 # Логи
+output/
+temp/
 *.log
 
 # Переменные окружения (секреты)
 .env
+
+# Временные файлы MS Word (создаются при открытии шаблонов!)
+~$*.docx
+*.tmp
 
 # Файлы проектов
 storage/*
@@ -32,3 +39,8 @@ scripts/*
 
 # Подписи
 templates/ms_word/signatures/*
+
+# Прочее
+TODO.md
+structure.txt
+.gitignore

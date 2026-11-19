@@ -5,7 +5,7 @@ from typing import Dict, Any
 from .builders.tex_builder import TexBuilder
 from engine.builders.modular_builder import ModularDocxBuilder
 from .converters.tex2pdf import TexToPdfConverter
-from .converters.docx2pdf import DocxToPdfConverter
+from .converters.docx2pdf import PdfConverter
 
 logger = logging.getLogger("callidus")
 
@@ -42,7 +42,7 @@ class DocumentPipeline:
         if source_path.suffix == ".tex":
             converter = TexToPdfConverter()
         elif source_path.suffix == ".docx":
-            converter = DocxToPdfConverter()
+            converter = PdfConverter()
         else:
             raise ValueError("Неподдерживаемый формат для конвертации.")
 

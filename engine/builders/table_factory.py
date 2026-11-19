@@ -680,5 +680,398 @@ class TableFactory:
                 for j, width in enumerate(col_widths):
                     row.cells[j].width = Cm(width)
 
-        # ВОЗВРАЩАЕМ ГОТОВЫЙ СУБДОКУМЕНТ (Вместо сырого XML)
+    def build_repair_docs_table(self, docs_data: dict, language: str = "rus-eng"):
+        """
+        Генерация таблицы ВРК/ВРС (Ведомость документов для ремонта) по ГОСТ 2.602-2013.
+        """
+        subdoc = self.tpl.new_subdoc()
+        table = subdoc.add_table(rows=1, cols=3)
+        table.style = 'Table Grid'
+        table.autofit = False
+
+        # Ширина колонок: Обозначение, Наименование, Примечание (Сумма = 17 см)
+        col_widths = [5.5, 8.5, 3.0]
+        for i, width in enumerate(col_widths):
+            table.columns[i].width = Cm(width)
+
+        # 1. Формируем заголовки
+        if language == "rus-eng":
+            headers = [
+                "Обозначение документа\nDocument designation",
+                "Наименование документа\nDocument description",
+                "Примечание\nNote"
+            ]
+        elif language == "eng":
+            headers = ["Document designation", "Document description", "Note"]
+        else:
+            headers = ["Обозначение документа", "Наименование документа", "Примечание"]
+
+        hdr_cells = table.rows[0].cells
+        for i, header_text in enumerate(headers):
+            self._format_cell(hdr_cells[i], header_text, is_header=True, align="center", bg_color="F2F2F2",
+                              bottom_border="4")
+            hdr_cells[i].width = Cm(col_widths[i])
+
+        # 2. Настраиваем группы разделов строго по ГОСТ 2.602-2013 (п. 7.6.2)
+        if language == "rus-eng":
+            sections = [
+                ("product_docs", "Документы на изделие\nDocuments for the product"),
+                ("component_docs", "Документы на составные части изделия\nDocuments for the product's components")
+            ]
+        elif language == "eng":
+            sections = [
+                ("product_docs", "Documents for the product"),
+                ("component_docs", "Documents for the product's components")
+            ]
+        else:
+            sections = [
+                ("product_docs", "Документы на изделие"),
+                ("component_docs", "Документы на составные части изделия")
+            ]
+
+        def combine(val_r, val_e):
+            val_r, val_e = str(val_r).strip(), str(val_e).strip()
+            if not val_r and not val_e: return "—"
+            if val_r == val_e: return val_r
+            if not val_e: return val_r
+            if not val_r: return val_e
+            return f"{val_r}\n{val_e}"
+
+        # 3. Заполняем таблицу
+        for sec_key, sec_title in sections:
+            items_rus = docs_data.get(sec_key, {}).get("rus", [])
+            items_eng = docs_data.get(sec_key, {}).get("eng", [])
+
+            if not items_rus and not items_eng:
+                continue
+
+            section_row = table.add_row()
+            section_row.cells[0].merge(section_row.cells[2])
+            self._format_cell(section_row.cells[0], sec_title, is_header=True, align="center", bg_color="E0E0E0")
+
+            max_len = max(len(items_rus), len(items_eng))
+            for i in range(max_len):
+                item_r = items_rus[i] if i < len(items_rus) else {}
+                item_e = items_eng[i] if i < len(items_eng) else {}
+
+                row = table.add_row()
+
+                if language == "rus-eng":
+                    desig = combine(item_r.get("designation", ""), item_e.get("designation", ""))
+                    name = combine(item_r.get("name", ""), item_e.get("name", ""))
+                    note = combine(item_r.get("note", ""), item_e.get("note", ""))
+                else:
+                    target_item = item_e if language == "eng" else item_r
+                    desig = str(target_item.get("designation", "")).strip() or "—"
+                    name = str(target_item.get("name", "")).strip() or "—"
+                    note = str(target_item.get("note", "")).strip() or "—"
+
+                self._format_cell(row.cells[0], desig, align="center")
+                self._format_cell(row.cells[1], name, align="left")
+                self._format_cell(row.cells[2], note, align="center")
+
+                for j, width in enumerate(col_widths):
+                    row.cells[j].width = Cm(width)
+
+        return subdoc
+
+    def build_zik_repair_table(self, zik_data: dict, language: str = "rus-eng"):
+        """
+        Генерация двуязычной Ведомости ЗИП на ремонт (ЗИК/ЗИС) по ГОСТ 2.602-2013 / ГОСТ 2.610.
+        """
+        subdoc = self.tpl.new_subdoc()
+        table = subdoc.add_table(rows=1, cols=4)
+        table.style = 'Table Grid'
+        table.autofit = False
+
+        # Ширина колонок: Обозначение, Наименование, Кол-во, Примечание (Сумма = 17 см)
+        col_widths = [4.5, 7.0, 2.0, 3.5]
+        for i, width in enumerate(col_widths):
+            table.columns[i].width = Cm(width)
+
+        # 1. Формируем заголовки
+        if language == "rus-eng":
+            headers = [
+                "Обозначение\nDesignation",
+                "Наименование\nName",
+                "Кол., шт.\nQty, pcs.",
+                "Примечание\nNote"
+            ]
+        elif language == "eng":
+            headers = ["Designation", "Name", "Qty, pcs.", "Note"]
+        else:
+            headers = ["Обозначение", "Наименование", "Кол., шт.", "Примечание"]
+
+        hdr_cells = table.rows[0].cells
+        for i, header_text in enumerate(headers):
+            self._format_cell(hdr_cells[i], header_text, is_header=True, align="center", bg_color="F2F2F2",
+                              bottom_border="4")
+            hdr_cells[i].width = Cm(col_widths[i])
+
+        # 2. Настраиваем разделы по ГОСТ 2.610
+        if language == "rus-eng":
+            sections = [
+                ("spare_parts", "Запасные части\nSpare parts"),
+                ("tools", "Инструмент\nTools"),
+                ("accessories", "Принадлежности\nAccessories"),
+                ("materials", "Материалы\nMaterials")
+            ]
+        elif language == "eng":
+            sections = [
+                ("spare_parts", "Spare parts"),
+                ("tools", "Tools"),
+                ("accessories", "Accessories"),
+                ("materials", "Materials")
+            ]
+        else:
+            sections = [
+                ("spare_parts", "Запасные части"),
+                ("tools", "Инструмент"),
+                ("accessories", "Принадлежности"),
+                ("materials", "Материалы")
+            ]
+
+        def combine(val_r, val_e):
+            val_r, val_e = str(val_r).strip(), str(val_e).strip()
+            if not val_r and not val_e: return "—"
+            if val_r == val_e: return val_r
+            if not val_e: return val_r
+            if not val_r: return val_e
+            return f"{val_r}\n{val_e}"
+
+        # 3. Заполняем таблицу
+        for sec_key, sec_title in sections:
+            items_rus = zik_data.get(sec_key, {}).get("rus", [])
+            items_eng = zik_data.get(sec_key, {}).get("eng", [])
+
+            if not items_rus and not items_eng:
+                continue
+
+            # Строка-подзаголовок (объединяем 4 ячейки)
+            section_row = table.add_row()
+            section_row.cells[0].merge(section_row.cells[3])
+            self._format_cell(section_row.cells[0], sec_title, is_header=True, align="center", bg_color="E0E0E0")
+
+            max_len = max(len(items_rus), len(items_eng))
+            for i in range(max_len):
+                item_r = items_rus[i] if i < len(items_rus) else {}
+                item_e = items_eng[i] if i < len(items_eng) else {}
+
+                row = table.add_row()
+
+                if language == "rus-eng":
+                    desig = combine(item_r.get("designation", ""), item_e.get("designation", ""))
+                    name = combine(item_r.get("name", ""), item_e.get("name", ""))
+                    qty = combine(item_r.get("quantity", ""), item_e.get("quantity", ""))
+                    note = combine(item_r.get("note", ""), item_e.get("note", ""))
+                else:
+                    target_item = item_e if language == "eng" else item_r
+                    desig = str(target_item.get("designation", "")).strip() or "—"
+                    name = str(target_item.get("name", "")).strip() or "—"
+                    qty = str(target_item.get("quantity", "")).strip() or "—"
+                    note = str(target_item.get("note", "")).strip() or "—"
+
+                self._format_cell(row.cells[0], desig, align="center")
+                self._format_cell(row.cells[1], name, align="left")
+                self._format_cell(row.cells[2], qty, align="center")
+                self._format_cell(row.cells[3], note, align="center")
+
+                for j, width in enumerate(col_widths):
+                    row.cells[j].width = Cm(width)
+
+        return subdoc
+
+    def build_zk_repair_table(self, zk_data: dict, language: str = "rus-eng"):
+        """
+        Генерация двуязычной таблицы Норм расхода запасных частей (ЗК/ЗС) по ГОСТ 2.602-2013.
+        """
+        subdoc = self.tpl.new_subdoc()
+        table = subdoc.add_table(rows=1, cols=4)
+        table.style = 'Table Grid'
+        table.autofit = False
+
+        # Ширина колонок: Обозначение, Наименование, Норма расхода, Примечание
+        col_widths = [4.5, 7.0, 2.0, 3.5]
+        for i, width in enumerate(col_widths):
+            table.columns[i].width = Cm(width)
+
+        # 1. Формируем заголовки (отличие от ЗИК - 3-я колонка)
+        if language == "rus-eng":
+            headers = [
+                "Обозначение\nDesignation",
+                "Наименование\nName",
+                "Норма расхода\nConsump. rate",
+                "Примечание\nNote"
+            ]
+        elif language == "eng":
+            headers = ["Designation", "Name", "Consump. rate", "Note"]
+        else:
+            headers = ["Обозначение", "Наименование", "Норма расхода", "Примечание"]
+
+        hdr_cells = table.rows[0].cells
+        for i, header_text in enumerate(headers):
+            self._format_cell(hdr_cells[i], header_text, is_header=True, align="center", bg_color="F2F2F2",
+                              bottom_border="4")
+            hdr_cells[i].width = Cm(col_widths[i])
+
+        # 2. Настраиваем разделы (совпадают с ЗИП по ГОСТ 2.602)
+        if language == "rus-eng":
+            sections = [
+                ("spare_parts", "Запасные части\nSpare parts"),
+                ("tools", "Инструмент\nTools"),
+                ("accessories", "Принадлежности\nAccessories")
+            ]
+        elif language == "eng":
+            sections = [
+                ("spare_parts", "Spare parts"),
+                ("tools", "Tools"),
+                ("accessories", "Accessories")
+            ]
+        else:
+            sections = [
+                ("spare_parts", "Запасные части"),
+                ("tools", "Инструмент"),
+                ("accessories", "Принадлежности")
+            ]
+
+        def combine(val_r, val_e):
+            val_r, val_e = str(val_r).strip(), str(val_e).strip()
+            if not val_r and not val_e: return "—"
+            if val_r == val_e: return val_r
+            if not val_e: return val_r
+            if not val_r: return val_e
+            return f"{val_r}\n{val_e}"
+
+        # 3. Заполняем таблицу
+        for sec_key, sec_title in sections:
+            items_rus = zk_data.get(sec_key, {}).get("rus", [])
+            items_eng = zk_data.get(sec_key, {}).get("eng", [])
+
+            if not items_rus and not items_eng:
+                continue
+
+            section_row = table.add_row()
+            section_row.cells[0].merge(section_row.cells[3])
+            self._format_cell(section_row.cells[0], sec_title, is_header=True, align="center", bg_color="E0E0E0")
+
+            max_len = max(len(items_rus), len(items_eng))
+            for i in range(max_len):
+                item_r = items_rus[i] if i < len(items_rus) else {}
+                item_e = items_eng[i] if i < len(items_eng) else {}
+
+                row = table.add_row()
+
+                if language == "rus-eng":
+                    desig = combine(item_r.get("designation", ""), item_e.get("designation", ""))
+                    name = combine(item_r.get("name", ""), item_e.get("name", ""))
+                    rate = combine(item_r.get("rate", ""), item_e.get("rate", ""))
+                    note = combine(item_r.get("note", ""), item_e.get("note", ""))
+                else:
+                    target_item = item_e if language == "eng" else item_r
+                    desig = str(target_item.get("designation", "")).strip() or "—"
+                    name = str(target_item.get("name", "")).strip() or "—"
+                    rate = str(target_item.get("rate", "")).strip() or "—"
+                    note = str(target_item.get("note", "")).strip() or "—"
+
+                self._format_cell(row.cells[0], desig, align="center")
+                self._format_cell(row.cells[1], name, align="left")
+                self._format_cell(row.cells[2], rate, align="center")
+                self._format_cell(row.cells[3], note, align="center")
+
+                for j, width in enumerate(col_widths):
+                    row.cells[j].width = Cm(width)
+
+        return subdoc
+
+    def build_mk_repair_table(self, mk_data: dict, language: str = "rus-eng"):
+        """
+        Генерация двуязычной таблицы Норм расхода материалов (МК/МС) по ГОСТ 2.602-2013.
+        """
+        subdoc = self.tpl.new_subdoc()
+        table = subdoc.add_table(rows=1, cols=4)
+        table.style = 'Table Grid'
+        table.autofit = False
+
+        # Ширина колонок: Обозначение, Наименование, Норма расхода, Примечание
+        col_widths = [4.5, 7.0, 2.0, 3.5]
+        for i, width in enumerate(col_widths):
+            table.columns[i].width = Cm(width)
+
+        # 1. Формируем заголовки
+        if language == "rus-eng":
+            headers = [
+                "Обозначение\nDesignation",
+                "Наименование\nName",
+                "Норма расхода\nConsump. rate",
+                "Примечание\nNote"
+            ]
+        elif language == "eng":
+            headers = ["Designation", "Name", "Consump. rate", "Note"]
+        else:
+            headers = ["Обозначение", "Наименование", "Норма расхода", "Примечание"]
+
+        hdr_cells = table.rows[0].cells
+        for i, header_text in enumerate(headers):
+            self._format_cell(hdr_cells[i], header_text, is_header=True, align="center", bg_color="F2F2F2",
+                              bottom_border="4")
+            hdr_cells[i].width = Cm(col_widths[i])
+
+        # 2. Настраиваем разделы (Для МК/МС нужен только раздел Материалы)
+        if language == "rus-eng":
+            sections = [("materials", "Материалы\nMaterials")]
+        elif language == "eng":
+            sections = [("materials", "Materials")]
+        else:
+            sections = [("materials", "Материалы")]
+
+        def combine(val_r, val_e):
+            val_r, val_e = str(val_r).strip(), str(val_e).strip()
+            if not val_r and not val_e: return "—"
+            if val_r == val_e: return val_r
+            if not val_e: return val_r
+            if not val_r: return val_e
+            return f"{val_r}\n{val_e}"
+
+        # 3. Заполняем таблицу
+        for sec_key, sec_title in sections:
+            items_rus = mk_data.get(sec_key, {}).get("rus", [])
+            items_eng = mk_data.get(sec_key, {}).get("eng", [])
+
+            if not items_rus and not items_eng:
+                continue
+
+            section_row = table.add_row()
+            section_row.cells[0].merge(section_row.cells[3])
+            self._format_cell(section_row.cells[0], sec_title, is_header=True, align="center", bg_color="E0E0E0")
+
+            max_len = max(len(items_rus), len(items_eng))
+            for i in range(max_len):
+                item_r = items_rus[i] if i < len(items_rus) else {}
+                item_e = items_eng[i] if i < len(items_eng) else {}
+
+                row = table.add_row()
+
+                if language == "rus-eng":
+                    desig = combine(item_r.get("designation", ""), item_e.get("designation", ""))
+                    name = combine(item_r.get("name", ""), item_e.get("name", ""))
+                    rate = combine(item_r.get("rate", ""), item_e.get("rate", ""))
+                    note = combine(item_r.get("note", ""), item_e.get("note", ""))
+                else:
+                    target_item = item_e if language == "eng" else item_r
+                    desig = str(target_item.get("designation", "")).strip() or "—"
+                    name = str(target_item.get("name", "")).strip() or "—"
+                    rate = str(target_item.get("rate", "")).strip() or "—"
+                    note = str(target_item.get("note", "")).strip() or "—"
+
+                self._format_cell(row.cells[0], desig, align="center")
+                self._format_cell(row.cells[1], name, align="left")
+                self._format_cell(row.cells[2], rate, align="center")
+                self._format_cell(row.cells[3], note, align="center")
+
+                for j, width in enumerate(col_widths):
+                    row.cells[j].width = Cm(width)
+
+        return subdoc
+
+        # ВОЗВРАЩАЕМ ГОТОВЫЙ СУБДОКУМЕНТ
         return subdoc

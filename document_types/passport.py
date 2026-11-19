@@ -14,6 +14,7 @@ class PassportData(BaseDocModel):
     scope_of_delivery: Optional[Dict[str, Any]] = None
 
     # Разделы, которые могут быть словарем, флагом bool (true/false) или null
+    contents: Optional[bool] = True
     warranties: Optional[Union[Dict[str, Any], bool]] = None
     preservation: Optional[Union[Dict[str, Any], bool]] = None
     packing: Optional[Union[Dict[str, Any], bool]] = None

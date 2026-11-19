@@ -8,6 +8,7 @@ class ManualData(BaseDocModel):
     unit: UnitParameters
 
     # Динамически заполняемые блоки РЭ
+    contents: Optional[bool] = True
     introduction: Optional[Dict[str, Any]] = None
     description_and_operation: Optional[Dict[str, Any]] = None
     usage: Optional[Dict[str, Any]] = None
